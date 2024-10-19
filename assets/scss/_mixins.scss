@@ -1,0 +1,51 @@
+@use 'sass:math';
+
+// import das variáveis
+@import 'variables';
+
+@mixin theme($theme) {
+    @if $theme == light {
+        background-color:  $light-background-main;
+        color: $light-color;
+    } @else if $theme == dark {
+        background-color: $dark-background-main;
+        color: $dark-color;
+    }
+}
+
+@function px-to-rem($px) {
+    @if $px != 0 {
+        @return math.div($px, $base-font-size) * 1rem;
+    } @else {
+        @return 0;
+    }
+}
+
+@mixin responsive-size($font-size: null, $padding: null, $margin: null) {
+    @if $font-size {
+        font-size: px-to-rem($font-size);
+    }
+  
+    @if $padding {
+        padding: px-to-rem($padding);
+    }
+  
+    @if $margin {
+        margin: px-to-rem($margin);
+    }
+}
+
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == small {
+        @media (max-width: 600px) { @content; }
+    } @else if $breakpoint == medium {
+        @media (max-width: 900px) { @content; }
+    } @else if $breakpoint == large {
+        @media (max-width: 1200px) { @content; }
+    }
+}  
+
+@mixin transition($properties...) {
+    transition: $properties 0.3s ease;
+}
+
