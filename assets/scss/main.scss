@@ -239,6 +239,8 @@ main {
 
             .textContainer {
                 grid-area: about;
+                display: flex;
+                flex-direction: column;
                 padding: 20px;
                 max-width: 75%;
 
@@ -249,6 +251,8 @@ main {
 
             .skills {
                 grid-area: skills;
+                display: flex;
+                flex-direction: column;
                 padding: 20px;
                 max-width: 75%;
 
@@ -293,6 +297,8 @@ main {
 
     .projects {
         padding-block-start: 50px;
+        display: flex;
+        flex-direction: column;
         background: $dark-background-accent;
 
         .projectContainer {
@@ -336,6 +342,7 @@ main {
                     align-items: left;
                     justify-content: center;
                     gap: px-to-rem(10px);
+                    font-family: $font-family-title;
                     @include responsive-size(22px, 10px, null);
                 }
 
@@ -355,8 +362,71 @@ main {
     }
 
     .contact {
+        padding-block-start: px-to-rem(50px);
         background: $dark-background-accent;
-        height: 200vh;
+        display: grid;
+        place-content: center;
+
+        .contactContainer {
+            display: flex;
+            gap: px-to-rem(40px);
+
+            .contactItem {
+                position: relative;
+                width: px-to-rem(80px);
+                height: px-to-rem(80px);
+                border-radius: 60px;
+                background-color: $dark-background-main;
+                box-shadow: 8px 8px 25px $color-shadow;
+                @include transition(width);
+
+                &:hover {
+                    width: px-to-rem(180px);
+                }
+
+                .linkContact {
+                    display: grid;
+                    place-content: center;
+                    border-radius: 60px;
+                    width: px-to-rem(80px);
+                    height: px-to-rem(80px);
+                    @include transition(width);
+
+                    &:hover {
+                        width: px-to-rem(180px);
+
+                        .iconContact {
+                            scale: 0;
+                        }
+
+                        .textContact {
+                            scale: 1;
+                            @include transition(scale);
+                            transition-delay: 0.1s;
+                        }
+                    }
+
+                    .iconContact {
+                        @include responsive-size(38px, null, null);
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        scale: 1;
+                        @include transition(scale);
+                    }
+
+                    .textContact {
+                        font-family: $font-family-title;
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        scale: 0;
+                    }
+                }
+            }
+        }
     }
 }
 

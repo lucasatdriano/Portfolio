@@ -43,9 +43,23 @@ summary {
 
 .title {
     @include responsive-size(48px, null, null);
-    text-decoration: underline;
-    text-align: center;
+    place-self: center;
     margin-block-end: px-to-rem(24px);
+    position: relative;
+    width: max-content;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: px-to-rem(5px);
+        border-radius: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: px-to-rem(3px);
+        background-color: $dark-color;
+        color: $dark-color;
+    }
 }
 
 .spanColor {
