@@ -5,11 +5,16 @@
 
 .header {
     background: $color-header;
-    height: 10svh;
-    box-shadow: 4px 5px 8px #22202040;
+    height: 7.5svh;
+    width: 100vw;
+    box-shadow: 4px 5px 8px $color-shadow;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    z-index: 999;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     padding-inline: px-to-rem(24px);
     padding-block: px-to-rem(12px);
     @include responsive-size(24px, null, null);
@@ -24,10 +29,9 @@
 
         .menu {
             display: flex;
-            
+
             .navItem {
                 @include responsive-size(null, 16px, null);
-                
             }
         }
     }
@@ -37,17 +41,17 @@
         align-items: center;
 
         .theme {
-            @include responsive-size(40px, 24px, null)
+            @include responsive-size(40px, 24px, null);
         }
 
         .languageContainer {
             position: relative;
             rotate: 0deg;
-            
-            &[open] summary .arrowLang{
+
+            &[open] summary .arrowLang {
                 transform: rotate(-180deg);
             }
-            
+
             summary {
                 @include responsive-size(null, 5px, null);
                 border: 2px solid $light-color;
@@ -55,7 +59,7 @@
                 display: flex;
                 align-items: center;
                 cursor: pointer;
-                
+
                 .arrowLang {
                     @include transition(transform);
                     transform: rotate(0deg);
@@ -69,26 +73,28 @@
             .imgFlag {
                 height: px-to-rem(38px);
             }
-            
+
             .optionsLang {
                 margin-block-start: px-to-rem(5px);
                 position: absolute;
                 width: 100%;
+                -webkit-backdrop-filter: blur(10px);
+                backdrop-filter: blur(10px);
                 background: $color-header;
                 border-radius: 5px;
                 @include responsive-size(null, 5px, null);
-                
+
                 .langs {
                     border-radius: 5px;
                     display: flex;
                     align-items: center;
                     padding-inline: 5px;
                     cursor: pointer;
-                    
+
                     * {
                         padding-inline: 5px;
                     }
-                    
+
                     &:hover {
                         background: $dark-background-hover;
                     }
@@ -104,6 +110,7 @@
 
 main {
     .hero {
+        padding-block-start: px-to-rem(100px);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -115,17 +122,18 @@ main {
 
             .heroText {
                 place-self: center;
+                width: 35%;
 
                 .heroTitle {
                     -webkit-user-select: none;
                     user-select: none;
-                    line-height: .9;
+                    line-height: 0.9;
                     @include responsive-size(32px, null, null);
-                    
+
                     .titleSpan {
                         font-family: $font-family-title;
                         @include responsive-size(96px, null, null);
-                        
+
                         &::after {
                             content: '|';
                             margin-left: 3px;
@@ -135,35 +143,34 @@ main {
                         }
                     }
                 }
-                
+
                 .heroSubTitle {
                     @include responsive-size(40px, null, null);
                     font-family: $font-family-logo;
                     text-indent: 16px;
                 }
             }
-            
+
             .heroDetails {
                 display: flex;
                 place-self: center;
                 align-items: center;
                 width: 50vw;
                 margin-block-start: px-to-rem(24px);
-                
+
                 * {
                     padding-inline: px-to-rem(10px);
                 }
-                
+
                 .heroLine {
                     width: 100%;
                     height: 3px;
                     border: none;
                     background-color: $dark-color;
                 }
-                
-                [class*=circle] {
+
+                [class*='circle'] {
                     @include responsive-size(16px, null, null);
-                    
                 }
 
                 .heroIcon {
@@ -172,14 +179,14 @@ main {
                 }
             }
         }
-        
+
         .scroll {
             align-items: center;
             display: flex;
             flex-direction: column;
             will-change: transform;
             animation: bounce 3s infinite;
-                
+
             .scrollText {
                 -webkit-user-select: none;
                 user-select: none;
@@ -192,23 +199,188 @@ main {
             }
         }
     }
+
+    .waveContainer {
+        position: relative;
+        overflow: hidden;
+        z-index: 100;
+        height: 500px;
+        margin-block-start: px-to-rem(-225px);
+
+        .parallaxWave {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: block;
+
+            &.numberOne {
+                margin-left: -200px;
+            }
+
+            &.numberTwo {
+                // margin-left: 500px;
+            }
+        }
+    }
+
+    .profileContainer {
+        margin-block-start: px-to-rem(-100px);
+        position: relative;
+        z-index: 200;
+        background: $dark-background-accent;
+
+        .about {
+            width: 75vw;
+            margin: auto;
+            display: grid;
+            align-items: center;
+            @include responsive-size(null, 24px, null);
+            grid-template-areas: 'about about image' 'skills skills image';
+
+            .textContainer {
+                grid-area: about;
+                padding: 20px;
+                max-width: 75%;
+
+                .textAboutMe {
+                    @include responsive-size(20px, null, null);
+                }
+            }
+
+            .skills {
+                grid-area: skills;
+                padding: 20px;
+                max-width: 75%;
+
+                h3 {
+                    @include responsive-size(32px, null, null);
+                }
+
+                .stackContainer {
+                    display: flex;
+                    gap: px-to-rem(16px);
+                    @include responsive-size(null, 16px, null);
+                }
+            }
+
+            .photoContainer {
+                grid-area: image;
+                position: relative;
+
+                img {
+                    height: px-to-rem(700px);
+                    border: 2px solid $color-details;
+                    position: relative;
+                    z-index: 200;
+                    border-radius: 150px 150px 10px 10px;
+                }
+
+                &::before {
+                    content: '';
+                    top: px-to-rem(25px);
+                    left: px-to-rem(50px);
+                    background-color: $color-shadow;
+                    border: 2px solid $color-details;
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    z-index: 100;
+                    border-radius: 150px 150px 10px 10px;
+                }
+            }
+        }
+    }
+
+    .projects {
+        padding-block-start: 50px;
+        background: $dark-background-accent;
+
+        .projectContainer {
+            background: $dark-background-main;
+            display: flex;
+            place-content: center;
+            padding-block: px-to-rem(10px);
+
+            .contentProject {
+                display: grid;
+                gap: px-to-rem(5px);
+                max-width: 75%;
+                grid-template-areas:
+                    'image    title       title   '
+                    'image description description'
+                    'image    links       stack   ';
+
+                .titleProject {
+                    grid-area: title;
+                    text-align: center;
+                    @include responsive-size(32px, 10px, null);
+                }
+
+                .imgDesktop {
+                    align-self: center;
+                    height: px-to-rem(300px);
+                    grid-area: image;
+                    border-radius: 10px;
+                    object-fit: contain;
+                }
+
+                .descriptionProject {
+                    grid-area: description;
+                    @include responsive-size(18px, 10px, null);
+                }
+
+                .stackContainer {
+                    display: flex;
+                    flex-direction: column;
+                    grid-area: stack;
+                    align-items: left;
+                    justify-content: center;
+                    gap: px-to-rem(10px);
+                    @include responsive-size(22px, 10px, null);
+                }
+
+                .linksProject {
+                    align-items: center;
+                    grid-area: links;
+                    display: flex;
+                    gap: px-to-rem(15px);
+
+                    .iconProject {
+                        margin-inline-start: px-to-rem(15px);
+                        @include responsive-size(56px, null, null);
+                    }
+                }
+            }
+        }
+    }
+
+    .contact {
+        background: $dark-background-accent;
+        height: 200vh;
+    }
 }
 
 footer {
-    @include responsive-size(16px, 12px, null);
+    background: $dark-background-accent;
+    @include responsive-size(16px, 8px, null);
 }
 
 @keyframes caret {
-    0%, 100% {
+    0%,
+    100% {
         filter: opacity(1);
     }
     50% {
         filter: opacity(0);
-    }   
+    }
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
     40% {
@@ -216,6 +388,5 @@ footer {
     }
     60% {
         transform: translateY(-10px);
-    
     }
 }
