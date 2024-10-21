@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Arial", sans-serif;
   font-size: 16px;
@@ -45,10 +49,8 @@ summary {
   place-self: center;
   margin-block-end: 1.5rem;
   position: relative;
-  width: -moz-max-content;
   width: max-content;
 }
-
 .title::after {
   content: "";
   position: absolute;
@@ -72,8 +74,8 @@ summary {
   display: inline-block;
   cursor: pointer;
 }
-
 .tooltip .tooltip-text {
+  font-family: "Arial", sans-serif;
   visibility: hidden;
   width: 7.5rem;
   background-color: #2b2a2a;
@@ -88,9 +90,8 @@ summary {
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
-  transition: bottom 0.3s, opacity 0.3s;
+  transition: 0.3s ease-in-out;
 }
-
 .tooltip:hover .tooltip-text {
   visibility: visible;
   bottom: 100%;
@@ -102,11 +103,11 @@ summary {
   border-radius: 10px;
 }
 
-.header {
+header {
   background: linear-gradient(to bottom, #393535, rgba(57, 54, 54, 0.3764705882));
   height: 7.5svh;
   width: 100vw;
-  box-shadow: 4px 5px 8px rgba(34, 32, 32, 0.2509803922);
+  box-shadow: 4px 4px 10px rgba(26, 24, 24, 0.4941176471);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -118,45 +119,40 @@ summary {
   padding-block: 0.75rem;
   font-size: 1.5rem;
 }
-
-.header .menuNav {
+header .menu {
   display: flex;
   align-items: center;
 }
-
-.header .menuNav .logo {
+header .menu .logo {
   font-size: 2rem;
   padding: 1rem;
 }
-
-.header .menuNav .menu {
+header .menu .menuNav {
   display: flex;
 }
-
-.header .menuNav .menu .navItem {
+header .menu .menuNav .navItem {
   padding: 1rem;
 }
-
-.header .settings {
+header .menu .menuNav .navItem a.active {
+  font-weight: bold;
+  color: blue;
+}
+header .settings {
   display: flex;
   align-items: center;
 }
-
-.header .settings .theme {
+header .settings .theme {
   font-size: 2.5rem;
   padding: 1.5rem;
 }
-
-.header .settings .languageContainer {
+header .settings .languageContainer {
   position: relative;
   rotate: 0deg;
 }
-
-.header .settings .languageContainer[open] summary .arrowLang {
+header .settings .languageContainer[open] summary .arrowLang {
   transform: rotate(-180deg);
 }
-
-.header .settings .languageContainer summary {
+header .settings .languageContainer summary {
   padding: 0.3125rem;
   border: 2px solid #0a0505;
   border-radius: 5px;
@@ -164,21 +160,17 @@ summary {
   align-items: center;
   cursor: pointer;
 }
-
-.header .settings .languageContainer summary .arrowLang {
+header .settings .languageContainer summary .arrowLang {
   transition: transform 0.3s ease;
   transform: rotate(0deg);
 }
-
-.header .settings .languageContainer summary * {
-  padding-inline: 5px;
+header .settings .languageContainer summary * {
+  padding-inline: 0.3125rem;
 }
-
-.header .settings .languageContainer .imgFlag {
+header .settings .languageContainer .imgFlag {
   height: 2.375rem;
 }
-
-.header .settings .languageContainer .optionsLang {
+header .settings .languageContainer .optionsLang {
   margin-block-start: 0.3125rem;
   position: absolute;
   width: 100%;
@@ -188,25 +180,55 @@ summary {
   border-radius: 5px;
   padding: 0.3125rem;
 }
-
-.header .settings .languageContainer .optionsLang .langs {
+header .settings .languageContainer .optionsLang .langs {
   border-radius: 5px;
   display: flex;
   align-items: center;
-  padding-inline: 5px;
+  padding-inline: 0.3125rem;
   cursor: pointer;
 }
-
-.header .settings .languageContainer .optionsLang .langs * {
-  padding-inline: 5px;
+header .settings .languageContainer .optionsLang .langs * {
+  padding-inline: 0.3125rem;
 }
-
-.header .settings .languageContainer .optionsLang .langs:hover {
+header .settings .languageContainer .optionsLang .langs:hover {
+  background: #2b2a2a;
+}
+header .settings .languageContainer .optionsLang .langs.active {
   background: #2b2a2a;
 }
 
-.header .settings .languageContainer .optionsLang .langs.active {
-  background: #2b2a2a;
+.buttonContainer {
+  cursor: pointer;
+  height: 4.6875rem;
+  width: 4.6875rem;
+  position: fixed;
+  bottom: 1.5625rem;
+  right: -6.25rem;
+  background-color: #2e2c2c;
+  box-shadow: 0 0 20px rgba(26, 24, 24, 0.4941176471);
+  font-size: 2rem;
+  border-radius: 50%;
+  z-index: 999;
+  opacity: 0;
+  transition: right 0.5s ease, opacity 0.5s ease;
+}
+.buttonContainer:hover {
+  animation: bounce 1.5s infinite;
+}
+.buttonContainer.visible {
+  opacity: 1;
+  right: 1.5625rem;
+}
+.buttonContainer.hidden {
+  opacity: 0;
+  right: -6.25rem;
+}
+.buttonContainer .buttonToTop {
+  display: grid;
+  place-content: center;
+  height: 4.6875rem;
+  width: 4.6875rem;
+  border-radius: 50%;
 }
 
 main .hero {
@@ -216,44 +238,36 @@ main .hero {
   justify-content: space-between;
   height: 75svh;
 }
-
 main .hero .containerHero {
   padding-block-start: 8rem;
   display: grid;
 }
-
 main .hero .containerHero .heroText {
   place-self: center;
   width: 35%;
 }
-
 main .hero .containerHero .heroText .heroTitle {
   -webkit-user-select: none;
-  -moz-user-select: none;
   user-select: none;
   line-height: 0.9;
   font-size: 2rem;
 }
-
 main .hero .containerHero .heroText .heroTitle .titleSpan {
   font-family: "Outfit", sans-serif;
   font-size: 6rem;
 }
-
 main .hero .containerHero .heroText .heroTitle .titleSpan::after {
   content: "|";
-  margin-left: 3px;
+  margin-left: 0.1875rem;
   opacity: 1;
   will-change: filter;
   animation: caret 0.7s infinite;
 }
-
 main .hero .containerHero .heroText .heroSubTitle {
   font-size: 2.5rem;
   font-family: "Fira Code", monospace;
   text-indent: 16px;
 }
-
 main .hero .containerHero .heroDetails {
   display: flex;
   place-self: center;
@@ -261,27 +275,22 @@ main .hero .containerHero .heroDetails {
   width: 50vw;
   margin-block-start: 1.5rem;
 }
-
 main .hero .containerHero .heroDetails * {
   padding-inline: 0.625rem;
 }
-
 main .hero .containerHero .heroDetails .heroLine {
   width: 100%;
-  height: 3px;
+  height: 0.1875rem;
   border: none;
   background-color: #f3eded;
 }
-
 main .hero .containerHero .heroDetails [class*=circle] {
   font-size: 1rem;
 }
-
 main .hero .containerHero .heroDetails .heroIcon {
   cursor: pointer;
   font-size: 3rem;
 }
-
 main .hero .scroll {
   align-items: center;
   display: flex;
@@ -289,45 +298,38 @@ main .hero .scroll {
   will-change: transform;
   animation: bounce 3s infinite;
 }
-
 main .hero .scroll .scrollText {
   -webkit-user-select: none;
-  -moz-user-select: none;
   user-select: none;
   text-align: center;
-  margin-block: -2.5px;
+  margin-block: -0.15625rem;
 }
-
 main .hero .scroll i {
   font-size: 3rem;
 }
-
 main .waveContainer {
   position: relative;
   overflow: hidden;
   z-index: 100;
-  height: 500px;
-  margin-block-start: -14.0625rem;
+  height: 31.25rem;
+  margin-block-start: -12.5rem;
 }
-
 main .waveContainer .parallaxWave {
   position: absolute;
   bottom: 0;
   width: 100%;
   display: block;
 }
-
 main .waveContainer .parallaxWave.numberOne {
-  margin-left: -200px;
+  margin-left: -12.5rem;
 }
-
 main .profileContainer {
+  scroll-margin-block-start: 5svh;
   margin-block-start: -6.25rem;
   position: relative;
   z-index: 200;
   background: #292626;
 }
-
 main .profileContainer .about {
   width: 75vw;
   margin: auto;
@@ -336,42 +338,35 @@ main .profileContainer .about {
   padding: 1.5rem;
   grid-template-areas: "about about image" "skills skills image";
 }
-
 main .profileContainer .about .textContainer {
   grid-area: about;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 1.25rem;
   max-width: 75%;
 }
-
 main .profileContainer .about .textContainer .textAboutMe {
   font-size: 1.25rem;
 }
-
 main .profileContainer .about .skills {
   grid-area: skills;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 1.25rem;
   max-width: 75%;
 }
-
 main .profileContainer .about .skills h3 {
   font-size: 2rem;
 }
-
 main .profileContainer .about .skills .stackContainer {
   display: flex;
   gap: 1rem;
   padding: 1rem;
 }
-
 main .profileContainer .about .photoContainer {
   grid-area: image;
   position: relative;
 }
-
 main .profileContainer .about .photoContainer img {
   height: 43.75rem;
   border: 2px solid #3d73be;
@@ -379,12 +374,12 @@ main .profileContainer .about .photoContainer img {
   z-index: 200;
   border-radius: 150px 150px 10px 10px;
 }
-
 main .profileContainer .about .photoContainer::before {
   content: "";
   top: 1.5625rem;
   left: 3.125rem;
-  background-color: rgba(34, 32, 32, 0.2509803922);
+  background-color: rgba(26, 24, 24, 0.4941176471);
+  opacity: 0.5;
   border: 2px solid #3d73be;
   height: 100%;
   width: 100%;
@@ -392,50 +387,51 @@ main .profileContainer .about .photoContainer::before {
   z-index: 100;
   border-radius: 150px 150px 10px 10px;
 }
-
 main .projects {
-  padding-block-start: 50px;
+  scroll-margin-block-start: 5svh;
+  padding-block-start: 3.125rem;
   display: flex;
   flex-direction: column;
+  gap: 0.625rem;
   background: #292626;
 }
-
 main .projects .projectContainer {
   background: #2e2c2c;
   display: flex;
   place-content: center;
   padding-block: 0.625rem;
 }
-
+main .projects .projectContainer:nth-child(even) .contentProject {
+  grid-template-areas: "title    title       image   " "description description image" "stack    links       image   ";
+}
+main .projects .projectContainer:nth-child(even) .contentProject .linksProject {
+  justify-content: end;
+  flex-direction: row-reverse;
+}
 main .projects .projectContainer .contentProject {
   display: grid;
   gap: 0.3125rem;
   max-width: 75%;
   grid-template-areas: "image    title       title   " "image description description" "image    links       stack   ";
 }
-
 main .projects .projectContainer .contentProject .titleProject {
   grid-area: title;
   text-align: center;
   font-size: 2rem;
   padding: 0.625rem;
 }
-
 main .projects .projectContainer .contentProject .imgDesktop {
   align-self: center;
   height: 18.75rem;
   grid-area: image;
   border-radius: 10px;
-  -o-object-fit: contain;
   object-fit: contain;
 }
-
 main .projects .projectContainer .contentProject .descriptionProject {
   grid-area: description;
   font-size: 1.125rem;
   padding: 0.625rem;
 }
-
 main .projects .projectContainer .contentProject .stackContainer {
   display: flex;
   flex-direction: column;
@@ -447,45 +443,41 @@ main .projects .projectContainer .contentProject .stackContainer {
   font-size: 1.375rem;
   padding: 0.625rem;
 }
-
 main .projects .projectContainer .contentProject .linksProject {
   align-items: center;
+  justify-content: start;
   grid-area: links;
   display: flex;
+  flex-direction: row;
   gap: 0.9375rem;
+  padding: 0.9375rem;
 }
-
 main .projects .projectContainer .contentProject .linksProject .iconProject {
-  margin-inline-start: 0.9375rem;
   font-size: 3.5rem;
 }
-
 main .contact {
+  scroll-margin-block-start: 5svh;
   padding-block-start: 3.125rem;
   background: #292626;
   display: grid;
   place-content: center;
 }
-
 main .contact .contactContainer {
   display: flex;
   gap: 2.5rem;
 }
-
 main .contact .contactContainer .contactItem {
   position: relative;
   width: 5rem;
   height: 5rem;
   border-radius: 60px;
   background-color: #2e2c2c;
-  box-shadow: 8px 8px 25px rgba(34, 32, 32, 0.2509803922);
+  box-shadow: 0 0 15px rgba(26, 24, 24, 0.4941176471);
   transition: width 0.3s ease;
 }
-
 main .contact .contactContainer .contactItem:hover {
   width: 11.25rem;
 }
-
 main .contact .contactContainer .contactItem .linkContact {
   display: grid;
   place-content: center;
@@ -494,21 +486,17 @@ main .contact .contactContainer .contactItem .linkContact {
   height: 5rem;
   transition: width 0.3s ease;
 }
-
 main .contact .contactContainer .contactItem .linkContact:hover {
   width: 11.25rem;
 }
-
 main .contact .contactContainer .contactItem .linkContact:hover .iconContact {
   scale: 0;
 }
-
 main .contact .contactContainer .contactItem .linkContact:hover .textContact {
   scale: 1;
   transition: scale 0.3s ease;
   transition-delay: 0.1s;
 }
-
 main .contact .contactContainer .contactItem .linkContact .iconContact {
   font-size: 2.375rem;
   position: absolute;
@@ -518,7 +506,6 @@ main .contact .contactContainer .contactItem .linkContact .iconContact {
   scale: 1;
   transition: scale 0.3s ease;
 }
-
 main .contact .contactContainer .contactItem .linkContact .textContact {
   font-family: "Outfit", sans-serif;
   position: absolute;
@@ -526,12 +513,22 @@ main .contact .contactContainer .contactItem .linkContact .textContact {
   top: 50%;
   transform: translate(-50%, -50%);
   scale: 0;
+  font-size: 1.25rem;
 }
 
 footer {
   background: #292626;
+  display: grid;
+  place-items: center;
+}
+footer .logo {
+  font-size: 3.5rem;
+  margin: 4rem;
+}
+footer .footerText {
   font-size: 1rem;
   padding: 0.5rem;
+  place-self: start;
 }
 
 @keyframes caret {
@@ -552,6 +549,6 @@ footer {
   60% {
     transform: translateY(-10px);
   }
-} 
+}
 
 /*# sourceMappingURL=main.css.map */

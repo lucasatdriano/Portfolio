@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: $font-family-body;
     font-size: $base-font-size;
@@ -73,6 +77,7 @@ summary {
     cursor: pointer;
 
     .tooltip-text {
+        font-family: $font-family-body;
         visibility: hidden;
         width: px-to-rem(120px);
         background-color: $dark-background-hover;
@@ -86,7 +91,7 @@ summary {
         left: 50%;
         transform: translateX(-50%);
         opacity: 0;
-        transition: bottom 0.3s, opacity 0.3s;
+        transition: 0.3s ease-in-out;
     }
 
     &:hover .tooltip-text {
