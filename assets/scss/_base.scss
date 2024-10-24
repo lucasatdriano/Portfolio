@@ -67,8 +67,11 @@ summary {
 }
 
 .spanColor {
-    color: $color-details;
+    background: $color-details;
     font-weight: 900;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 .tooltip {
@@ -76,7 +79,7 @@ summary {
     display: inline-block;
     cursor: pointer;
 
-    .tooltip-text {
+    .tooltipText {
         font-family: $font-family-body;
         visibility: hidden;
         width: px-to-rem(120px);
@@ -94,11 +97,15 @@ summary {
         transition: 0.3s ease-in-out;
     }
 
-    &:hover .tooltip-text {
+    &:hover .tooltipText {
         visibility: visible;
         bottom: 100%;
         opacity: 1;
     }
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 .iconStack {
