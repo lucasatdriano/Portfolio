@@ -2,16 +2,19 @@
 $dark-background-main: #2e2c2c;
 $dark-background-accent: #292626;
 $dark-background-hover: #2b2a2a;
+$dark-background-header: linear-gradient(to bottom, #393535, #39363660);
+$dark-background-font: #f3eded;
 $dark-color: #f3eded;
 $light-background-main: #d6d2d2;
 $light-background-accent: #e4e2e2;
 $light-background-hover: #cac4c4;
+$light-background-header: linear-gradient(to bottom, #e4e2e2, #e4e2e260);
+$light-background-font: #0a0505;
 $light-color: #0a0505;
 
 // Cores
-$color-header: linear-gradient(to bottom, #393535, #39363660);
 $color-shadow: #1a18187e;
-$color-details: linear-gradient(#3d73be, #0ce3d9);
+$color-details: linear-gradient(to right, #3d73be, #0c8de3);
 
 // Tipografia
 $font-family-logo: 'Fira Code', monospace;

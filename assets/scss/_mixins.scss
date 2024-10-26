@@ -3,12 +3,32 @@
 // import das variáveis
 @import 'variables';
 
-@mixin theme($theme) {
+@mixin theme($theme, $background-type: 'main') {
     @if $theme == light {
-        background-color: $light-background-main;
+        @if $background-type == 'main' {
+            background-color: $light-background-main;
+        } @else if $background-type == 'accent' {
+            background-color: $light-background-accent;
+        } @else if $background-type == 'header' {
+            background: $light-background-header;
+        } @else if $background-type == 'hover' {
+            background-color: $light-background-hover;
+        } @else if $background-type == 'font' {
+            background-color: $light-background-font;
+        }
         color: $light-color;
     } @else if $theme == dark {
-        background-color: $dark-background-main;
+        @if $background-type == 'main' {
+            background-color: $dark-background-main;
+        } @else if $background-type == 'accent' {
+            background-color: $dark-background-accent;
+        } @else if $background-type == 'header' {
+            background: $dark-background-header;
+        } @else if $background-type == 'hover' {
+            background-color: $dark-background-hover;
+        } @else if $background-type == 'font' {
+            background-color: $dark-background-font;
+        }
         color: $dark-color;
     }
 }

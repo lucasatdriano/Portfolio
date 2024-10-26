@@ -4,7 +4,7 @@
 @import 'base';
 
 header {
-    background: $color-header;
+    @include theme(dark, 'header');
     height: 7.5svh;
     width: 100vw;
     box-shadow: 4px 4px 10px $color-shadow;
@@ -17,6 +17,8 @@ header {
     backdrop-filter: blur(10px);
     padding-inline: px-to-rem(24px);
     padding-block: px-to-rem(12px);
+    -webkit-user-select: none;
+    user-select: none;
     @include responsive-size(24px, null, null);
 
     .menu {
@@ -36,6 +38,7 @@ header {
                 .link {
                     position: relative;
                     font-family: $font-family-title;
+                    @include transition(background);
 
                     &::after {
                         content: '';
@@ -88,7 +91,6 @@ header {
                 }
 
                 &:checked ~ .iconMoon {
-                    transition-delay: 200ms;
                     transform: scale(1) rotate(360deg);
                 }
             }
@@ -97,10 +99,6 @@ header {
                 position: absolute;
                 @include responsive-size(40px, null, null);
                 @include transition(transform);
-            }
-
-            .iconSun {
-                transition-delay: 200ms;
             }
 
             .iconMoon {
@@ -142,9 +140,9 @@ header {
                 margin-block-start: px-to-rem(5px);
                 position: absolute;
                 width: 100%;
+                @include theme(dark, 'header');
                 -webkit-backdrop-filter: blur(10px);
                 backdrop-filter: blur(10px);
-                background: $color-header;
                 border-radius: 5px;
                 @include responsive-size(null, 5px, null);
 
@@ -160,11 +158,11 @@ header {
                     }
 
                     &:hover {
-                        background: $dark-background-hover;
+                        @include theme(dark, 'hover');
                     }
 
                     &.active {
-                        background: $dark-background-hover;
+                        @include theme(dark, 'hover');
                     }
                 }
             }
@@ -179,7 +177,7 @@ header {
     position: fixed;
     bottom: px-to-rem(25px);
     right: px-to-rem(-100px);
-    background-color: $dark-background-main;
+    @include theme(dark);
     box-shadow: 0 0 20px $color-shadow;
     @include responsive-size(32px, null, null);
     border-radius: 50%;
@@ -223,8 +221,9 @@ main {
             display: grid;
 
             .heroText {
-                place-self: center;
-                width: 35%;
+                display: grid;
+                place-content: center;
+                width: 100%;
 
                 .heroTitle {
                     -webkit-user-select: none;
@@ -257,22 +256,22 @@ main {
                 display: flex;
                 place-self: center;
                 align-items: center;
-                width: 50vw;
+                width: 75vw;
                 margin-block-start: px-to-rem(24px);
 
                 * {
-                    padding-inline: px-to-rem(10px);
+                    padding-inline: px-to-rem(5px);
                 }
 
                 .heroLine {
                     width: 100%;
                     height: px-to-rem(3px);
                     border: none;
-                    background-color: $dark-color;
+                    @include theme(dark, 'font');
                 }
 
                 [class*='circle'] {
-                    @include responsive-size(16px, null, null);
+                    @include responsive-size(16px, 10px, null);
                 }
 
                 .heroIcon {
@@ -312,11 +311,20 @@ main {
         .parallaxWave {
             position: absolute;
             bottom: 0;
-            width: 100%;
             display: block;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            width: 100vw;
+            height: 435px;
 
             &.numberOne {
+                background-image: url('/assets/images/decorationsImages/waveDarkOne.svg');
                 margin-left: px-to-rem(-200px);
+            }
+
+            &.numberTwo {
+                background-image: url('/assets/images/decorationsImages/waveDarkTwo.svg');
             }
         }
     }
@@ -326,7 +334,7 @@ main {
         margin-block-start: px-to-rem(-160px);
         position: relative;
         z-index: 200;
-        background: $dark-background-accent;
+        @include theme(dark, 'accent');
 
         .about {
             width: 75vw;
@@ -402,10 +410,10 @@ main {
         display: flex;
         flex-direction: column;
         gap: px-to-rem(10px);
-        background: $dark-background-accent;
+        @include theme(dark, 'accent');
 
         .projectContainer {
-            background: $dark-background-main;
+            @include theme(dark);
             display: flex;
             place-content: center;
             padding-block: px-to-rem(10px);
@@ -421,12 +429,16 @@ main {
                         justify-content: end;
                         flex-direction: row-reverse;
                     }
+
+                    .stackContainer {
+                        place-self: start;
+                        place-items: start;
+                    }
                 }
             }
 
             .contentProject {
                 display: grid;
-                gap: px-to-rem(5px);
                 max-width: 75%;
                 grid-template-areas:
                     'image    title       title   '
@@ -435,45 +447,63 @@ main {
 
                 .titleProject {
                     grid-area: title;
-                    text-align: center;
-                    @include responsive-size(32px, 10px, null);
+                    place-self: center;
+                    @include responsive-size(32px, null, null);
                 }
 
-                .imgDesktop {
-                    align-self: center;
-                    height: px-to-rem(300px);
+                .linkImage {
                     grid-area: image;
-                    border-radius: 10px;
-                    object-fit: contain;
+                    align-self: center;
+                    margin-inline: 10px;
+
+                    .imgDesktop {
+                        height: px-to-rem(315px);
+                        border-radius: 10px;
+                        object-fit: contain;
+                    }
                 }
 
                 .descriptionProject {
                     grid-area: description;
                     @include responsive-size(18px, 10px, null);
+                    margin-block-start: px-to-rem(-5px);
                 }
 
                 .stackContainer {
-                    display: flex;
-                    flex-direction: column;
                     grid-area: stack;
-                    align-items: left;
-                    justify-content: center;
-                    gap: px-to-rem(10px);
+                    justify-self: end;
+                    width: 500px;
+                    display: grid;
+                    justify-items: end;
+                    gap: px-to-rem(5px);
                     font-family: $font-family-title;
-                    @include responsive-size(22px, 10px, null);
+                    @include responsive-size(22px, null, null);
+                    padding-inline: px-to-rem(10px);
+
+                    .stacks {
+                        width: fit-content;
+                    }
 
                     .stackDetails {
                         display: flex;
-                        gap: px-to-rem(8px);
+                        gap: px-to-rem(10px);
+                        width: fit-content;
+
+                        .techsInProject {
+                            display: grid;
+                            place-content: center;
+                            align-self: center;
+                        }
                     }
                 }
 
                 .linksProject {
+                    grid-area: links;
+                    width: 100%;
+                    place-self: start;
+                    display: flex;
                     align-items: center;
                     justify-content: start;
-                    grid-area: links;
-                    display: flex;
-                    flex-direction: row;
                     gap: px-to-rem(15px);
                     @include responsive-size(null, 15px, null);
 
@@ -486,9 +516,9 @@ main {
     }
 
     .contact {
+        @include theme(dark, 'accent');
         scroll-margin-block-start: 5svh;
         padding-block-start: px-to-rem(50px);
-        background: $dark-background-accent;
         display: grid;
         place-content: center;
 
@@ -501,7 +531,7 @@ main {
                 width: px-to-rem(80px);
                 height: px-to-rem(80px);
                 border-radius: 60px;
-                background-color: $dark-background-main;
+                @include theme(dark);
                 box-shadow: 0 0 15px $color-shadow;
                 @include transition(width);
 
@@ -557,7 +587,7 @@ main {
 }
 
 footer {
-    background: $dark-background-accent;
+    @include theme(dark, 'accent');
     display: grid;
     place-items: center;
 
@@ -613,6 +643,82 @@ footer {
     }
 }
 
+.light {
+    header {
+        @include theme(light, 'header');
+
+        .settings {
+            .languageContainer {
+                .optionsLang {
+                    @include theme(light, 'header');
+
+                    .langs {
+                        &:hover {
+                            @include theme(light, 'hover');
+                        }
+
+                        &.active {
+                            @include theme(light, 'hover');
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .buttonContainer {
+        @include theme(light);
+    }
+
+    main {
+        .hero {
+            .containerHero {
+                .heroDetails {
+                    .heroLine {
+                        @include theme(light, 'font');
+                    }
+                }
+            }
+        }
+
+        .waveContainer {
+            .numberOne {
+                background-image: url('/assets/images/decorationsImages/waveLightOne.svg');
+            }
+
+            .numberTwo {
+                background-image: url('/assets/images/decorationsImages/waveLightTwo.svg');
+            }
+        }
+
+        .profileContainer {
+            @include theme(light, 'accent');
+        }
+
+        .projects {
+            @include theme(light, 'accent');
+
+            .projectContainer {
+                @include theme(light);
+            }
+        }
+
+        .contact {
+            @include theme(light, 'accent');
+
+            .contactContainer {
+                .contactItem {
+                    @include theme(light);
+                }
+            }
+        }
+    }
+
+    footer {
+        @include theme(light, 'accent');
+    }
+}
+
 @keyframes caret {
     0%,
     100% {
@@ -636,21 +742,5 @@ footer {
     }
     60% {
         transform: translateY(-10px);
-    }
-}
-
-@keyframes sunAnimation {
-    0%,
-    20% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    80% {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(-60px);
-        opacity: 0;
     }
 }

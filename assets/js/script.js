@@ -1,3 +1,4 @@
+//
 const items = document.querySelectorAll('.langs');
 let currentActive = document.querySelector('.langs.active');
 
@@ -15,6 +16,7 @@ items.forEach((item) => {
     });
 });
 
+//
 const titulo = document.querySelector('.titleSpan');
 
 function typeWrite(element) {
@@ -79,6 +81,7 @@ typeWrite(titulo);
 
 // handleTyping();
 
+//
 document.addEventListener('scroll', function () {
     const sections = document.querySelectorAll('section');
     const menuLinks = document.querySelectorAll('.menuNav a');
@@ -102,7 +105,7 @@ document.addEventListener('scroll', function () {
     });
 });
 
-const toTopBtn = document.getElementById('toTopBtn');
+const toTopBtn = document.querySelector('#toTopBtn');
 
 window.onscroll = function () {
     scrollFunction();
@@ -120,3 +123,22 @@ function scrollFunction() {
         toTopBtn.classList.remove('visible');
     }
 }
+
+//
+const inputCheck = document.querySelector('#inputTheme');
+const body = document.body;
+
+if (localStorage.getItem('light') === 'enabled') {
+    body.classList.add('light');
+    inputCheck.checked = true;
+}
+
+inputCheck.addEventListener('change', () => {
+    if (inputCheck.checked) {
+        body.classList.add('light');
+        localStorage.setItem('lightMode', 'enabled');
+    } else {
+        body.classList.remove('light');
+        localStorage.setItem('lightMode', 'disabled');
+    }
+});

@@ -7,6 +7,7 @@
 }
 
 html {
+    overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
@@ -24,11 +25,13 @@ h3 {
 }
 
 ul,
-a,
 summary {
+    list-style-type: none;
+}
+
+a {
     text-decoration: none;
     color: $dark-color;
-    list-style-type: none;
 }
 
 .logo {
@@ -36,13 +39,13 @@ summary {
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: $dark-background-main;
+    @include theme(dark);
     border-radius: 10px;
 }
 
 *::-webkit-scrollbar {
     width: px-to-rem(10px);
-    background: $dark-background-accent;
+    @include theme(dark, 'accent');
 }
 
 .title {
@@ -61,8 +64,7 @@ summary {
         transform: translateX(-50%);
         width: 100%;
         height: px-to-rem(3px);
-        background-color: $dark-color;
-        color: $dark-color;
+        @include theme(dark, 'font');
     }
 }
 
@@ -83,8 +85,7 @@ summary {
         font-family: $font-family-body;
         visibility: hidden;
         width: px-to-rem(120px);
-        background-color: $dark-background-hover;
-        color: $dark-color;
+        @include theme(dark, 'hover');
         text-align: center;
         border-radius: 5px;
         @include responsive-size(16px, 5px, null);
@@ -111,4 +112,36 @@ summary {
 .iconStack {
     height: px-to-rem(56px);
     border-radius: 10px;
+}
+
+.light {
+    @include theme(light);
+
+    body {
+        @include theme(light);
+    }
+
+    *::-webkit-scrollbar-thumb {
+        @include theme(light);
+    }
+
+    *::-webkit-scrollbar {
+        @include theme(light, 'accent');
+    }
+
+    a {
+        color: $light-color;
+    }
+
+    .title {
+        &::after {
+            @include theme(light, 'font');
+        }
+    }
+
+    .tooltip {
+        .tooltipText {
+            @include theme(light, 'hover');
+        }
+    }
 }
