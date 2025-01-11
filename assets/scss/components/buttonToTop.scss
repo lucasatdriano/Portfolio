@@ -1,0 +1,41 @@
+@import '../utils/mixins';
+@import '../utils/variables';
+@import '../animations/animations';
+
+.buttonContainer {
+    cursor: pointer;
+    height: px-to-rem(65px);
+    width: px-to-rem(65px);
+    position: fixed;
+    bottom: px-to-rem(25px);
+    right: px-to-rem(-100px);
+    @include theme(dark);
+    box-shadow: 0 0 20px $color-shadow;
+    @include responsive-size(32px, null, null);
+    border-radius: 50%;
+    z-index: 999;
+    opacity: 0;
+    transition: right 0.5s ease, opacity 0.5s ease;
+
+    &:hover {
+        animation: bounce 1.5s infinite;
+    }
+
+    &.visible {
+        opacity: 1;
+        right: px-to-rem(25px);
+    }
+
+    &.hidden {
+        opacity: 0;
+        right: px-to-rem(-100px);
+    }
+
+    .buttonToTop {
+        display: grid;
+        place-content: center;
+        height: px-to-rem(65px);
+        width: px-to-rem(65px);
+        border-radius: 50%;
+    }
+}

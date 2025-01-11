@@ -43,7 +43,11 @@
 
 @mixin responsive-size($font-size: null, $padding: null, $margin: null) {
     @if $font-size {
-        font-size: px-to-rem($font-size);
+        font-size: clamp(
+            px-to-rem($font-size * 0.7),
+            2vw,
+            px-to-rem($font-size * 1.2)
+        );
     }
 
     @if $padding {
@@ -56,16 +60,16 @@
 }
 
 @mixin respond-to($breakpoint) {
-    @if $breakpoint == small {
+    @if $breakpoint == 'small' {
         @media (max-width: 600px) {
             @content;
         }
-    } @else if $breakpoint == medium {
+    } @else if $breakpoint == 'medium' {
         @media (max-width: 900px) {
             @content;
         }
-    } @else if $breakpoint == large {
-        @media (max-width: 1200px) {
+    } @else if $breakpoint == 'wave' {
+        @media (max-width: 1450px) {
             @content;
         }
     }

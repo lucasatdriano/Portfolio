@@ -1,0 +1,10 @@
+@import '../utils/mixins';
+
+.projects {
+    scroll-margin-block-start: 5svh;
+    padding-block-start: px-to-rem(50px);
+    display: flex;
+    flex-direction: column;
+    gap: px-to-rem(10px);
+    @include theme(dark, 'accent');
+}

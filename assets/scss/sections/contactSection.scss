@@ -1,0 +1,72 @@
+@import '../utils/mixins';
+@import '../utils/variables';
+
+.contact {
+    @include theme(dark, 'accent');
+    scroll-margin-block-start: 5svh;
+    padding-block-start: px-to-rem(50px);
+    display: grid;
+    place-content: center;
+
+    .contactContainer {
+        display: flex;
+        gap: px-to-rem(40px);
+
+        .contactItem {
+            position: relative;
+            width: px-to-rem(80px);
+            height: px-to-rem(80px);
+            border-radius: 60px;
+            @include theme(dark);
+            box-shadow: 0 0 15px $color-shadow;
+            @include transition(width);
+
+            &:hover {
+                width: px-to-rem(180px);
+            }
+
+            .linkContact {
+                display: grid;
+                place-content: center;
+                border-radius: 60px;
+                width: px-to-rem(80px);
+                height: px-to-rem(80px);
+                @include transition(width);
+
+                &:hover {
+                    width: px-to-rem(180px);
+
+                    .iconContact {
+                        scale: 0;
+                    }
+
+                    .textContact {
+                        scale: 1;
+                        @include transition(scale);
+                        transition-delay: 0.1s;
+                    }
+                }
+
+                .iconContact {
+                    @include responsive-size(38px, null, null);
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    scale: 1;
+                    @include transition(scale);
+                }
+
+                .textContact {
+                    font-family: $font-family-title;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    scale: 0;
+                    @include responsive-size(20px, null, null);
+                }
+            }
+        }
+    }
+}

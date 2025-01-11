@@ -1,0 +1,33 @@
+@import '../utils/mixins';
+@import '../utils/variables';
+
+.theme {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: px-to-rem(45px);
+    height: px-to-rem(45px);
+    position: relative;
+
+    .themeToggle {
+        display: none;
+
+        &:checked + .iconSun {
+            transform: rotate(360deg) scale(0);
+        }
+
+        &:checked ~ .iconMoon {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+
+    [class*='icon'] {
+        position: absolute;
+        @include responsive-size(40px, null, null);
+        @include transition(transform);
+    }
+
+    .iconMoon {
+        transform: scale(0);
+    }
+}

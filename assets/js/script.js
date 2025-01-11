@@ -28,63 +28,10 @@ function typeWrite(element) {
 }
 typeWrite(titulo);
 
-// const buttonToTop = document.querySelector('.buttonsToTop');
-// const buttonText = buttonToTop.querySelector('.buttonTsext');
-
-// let currentLength = 0;
-// const textContent = buttonText.textContent;
-// let typingTimeout;
-// let isTyping = false;
-
-// function startTypingReverse() {
-//     if (currentLength > 0) {
-//         buttonText.style.width = `${
-//             ((currentLength - 1) / textContent.length) * 100
-//         }%`;
-//         currentLength--;
-//         typingTimeout = setTimeout(startTypingReverse, 75);
-//     } else {
-//         buttonText.style.width = '0%';
-//         buttonText.style.animation = 'none';
-
-//         buttonToTop.classList.add('rotate');
-//     }
-// }
-
-// function handleTyping() {
-//     if (currentLength < textContent.length) {
-//         buttonText.style.width = `${
-//             (currentLength / textContent.length) * 100
-//         }%`;
-//         currentLength++;
-//         typingTimeout = setTimeout(handleTyping, 75);
-//     } else {
-//         buttonText.style.width = '100%';
-//     }
-// }
-
-// buttonToTop.addEventListener('mouseover', () => {
-//     clearTimeout(typingTimeout);
-//     isTyping = false;
-//     startTypingReverse();
-// });
-
-// buttonToTop.addEventListener('mouseout', () => {
-//     clearTimeout(typingTimeout);
-//     if (currentLength < textContent.length) {
-//         isTyping = true;
-//         handleTyping();
-//     } else {
-//         buttonText.style.width = '100%';
-//     }
-// });
-
-// handleTyping();
-
 //
 document.addEventListener('scroll', function () {
     const sections = document.querySelectorAll('section');
-    const menuLinks = document.querySelectorAll('.menuNav a');
+    const menuLinks = document.querySelectorAll('.menuNavDesktop a');
 
     let currentSection = '';
 

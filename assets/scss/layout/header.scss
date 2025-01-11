@@ -1,0 +1,114 @@
+@import '../utils/mixins';
+@import '../utils/variables';
+
+header {
+    @include theme(dark, 'header');
+    width: 100vw;
+    box-shadow: 4px 4px 10px $color-shadow;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding-inline: px-to-rem(24px);
+    -webkit-user-select: none;
+    user-select: none;
+    @include responsive-size(24px, null, null);
+
+    .menu {
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        .logo {
+            white-space: nowrap;
+            @include responsive-size(32px, 16px, null);
+        }
+
+        .settings {
+            display: flex;
+            align-items: center;
+            gap: px-to-rem(15px);
+
+            .languageContainer {
+                position: relative;
+                rotate: 0deg;
+
+                &[open] summary .arrowLang {
+                    transform: rotate(-180deg);
+                }
+
+                summary {
+                    @include responsive-size(null, 2.5px, null);
+                    border: 2px solid $light-color;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+
+                    .arrowLang {
+                        @include transition(transform);
+                        transform: rotate(0deg);
+                    }
+
+                    * {
+                        padding-inline: px-to-rem(5px);
+                    }
+                }
+
+                .imgFlag {
+                    height: px-to-rem(38px);
+                }
+
+                .optionsLang {
+                    margin-block-start: px-to-rem(5px);
+                    position: absolute;
+                    width: 100%;
+                    display: grid;
+                    gap: px-to-rem(5px);
+                    @include theme(dark, 'main');
+                    box-shadow: 4px 4px 10px $color-shadow;
+                    -webkit-backdrop-filter: blur(15px);
+                    backdrop-filter: blur(10px);
+                    border-radius: 5px;
+                    @include responsive-size(null, 5px, null);
+
+                    .langs {
+                        border-radius: 5px;
+                        display: flex;
+                        align-items: center;
+                        padding-inline: px-to-rem(5px);
+                        cursor: pointer;
+
+                        * {
+                            padding-inline: px-to-rem(5px);
+                        }
+
+                        &:hover {
+                            @include theme(dark, 'hover');
+                        }
+
+                        &.active {
+                            @include theme(dark, 'hover');
+                        }
+                    }
+                }
+            }
+        }
+
+        @include respond-to('medium') {
+            .settings {
+                margin-block-start: px-to-rem(20px);
+
+                .languageContainer {
+                    .optionsLang {
+                        margin-block-start: px-to-rem(15px);
+                        right: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

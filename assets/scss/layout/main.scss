@@ -1,0 +1,24 @@
+// Import de Arquivos
+@import '../utils/variables';
+@import '../utils/mixins';
+
+@import '../base/base';
+
+@import '../layout/header';
+@import '../layout/wave';
+@import '../layout/footer';
+
+@import '../sections/heroSection';
+@import '../sections/profileSection';
+@import '../sections/projectsSection';
+@import '../sections/contactSection';
+
+@import '../components/buttonToTop';
+@import '../components/cardProject';
+@import '../components/navBarDesktop';
+@import '../components/navBarMobile';
+@import '../components/toggleTheme';
+
+@import '../animations/animations';
+
+@import '../themes/light';

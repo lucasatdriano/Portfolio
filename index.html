@@ -64,89 +64,185 @@
 
     <body>
         <header>
-            <nav class="menu" role="navigation">
+            <div class="menu" role="navigation">
                 <p class="logo">&lt;Lucas Adriano/&gt;</p>
-                <ul class="menuNav">
-                    <li class="navItem">
-                        <a
-                            href="#aboutContainer"
-                            class="link"
-                            title="Ir para a seção Sobre"
-                            aria-label="Ir para a seção Sobre"
-                            >Sobre</a
-                        >
-                    </li>
-                    <li class="navItem">
-                        <a
-                            href="#projectsContainer"
-                            class="link"
-                            title="Ir para a seção Projetos"
-                            aria-label="Ir para a seção Projetos"
-                            >Projetos</a
-                        >
-                    </li>
-                    <li class="navItem">
-                        <a
-                            href="#contactsContainer"
-                            class="link"
-                            title="Ir para a seção Contato"
-                            aria-label="Ir para a seção Contato"
-                            >Contato</a
-                        >
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="settings">
-                <label for="inputTheme" class="theme">
-                    <input
-                        type="checkbox"
-                        name="inputAlterTheme"
-                        id="inputTheme"
-                        class="themeToggle"
-                        aria-label="Alterar tema"
-                    />
-                    <i class="bx bx-sun iconSun" aria-hidden="true"></i>
-                    <i class="bx bx-moon iconMoon" aria-hidden="true"></i>
-                </label>
-
-                <details class="languageContainer">
-                    <summary>
-                        <img
-                            src="./assets/images/decorationsImages/brazil.png"
-                            alt="Bandeira do Brasil"
-                            class="imgFlag"
-                        />
-                        <p class="language">Português</p>
-                        <i class="bx bx-chevron-down arrowLang"></i>
-                    </summary>
-                    <ul class="optionsLang" role="listbox">
-                        <li class="langs active">
-                            <img
-                                src="./assets/images/decorationsImages/brazil.png"
-                                alt="Bandeira do Brasil"
-                                class="imgFlag"
-                            />
-                            <p class="language">Português</p>
+                <nav class="menuNavDesktop">
+                    <ul class="navDesktop">
+                        <li class="navItem">
+                            <a
+                                href="#aboutContainer"
+                                class="link"
+                                title="Ir para a seção Sobre"
+                                aria-label="Ir para a seção Sobre"
+                                >Sobre</a
+                            >
                         </li>
-                        <li class="langs">
-                            <img
-                                src="./assets/images/decorationsImages/usa.png"
-                                alt="Bandeira dos Estados Unidos"
-                                class="imgFlag"
-                            />
-                            <p class="language">Inglês</p>
+                        <li class="navItem">
+                            <a
+                                href="#projectsContainer"
+                                class="link"
+                                title="Ir para a seção Projetos"
+                                aria-label="Ir para a seção Projetos"
+                                >Projetos</a
+                            >
                         </li>
-                        <li class="langs">
-                            <img
-                                src="./assets/images/decorationsImages/spain.png"
-                                alt="Bandeira da Espanha"
-                                class="imgFlag"
-                            />
-                            <p class="language">Espanhol</p>
+                        <li class="navItem">
+                            <a
+                                href="#contactsContainer"
+                                class="link"
+                                title="Ir para a seção Contato"
+                                aria-label="Ir para a seção Contato"
+                                >Contato</a
+                            >
                         </li>
                     </ul>
-                </details>
+                    <div class="settings">
+                        <label for="inputTheme" class="theme">
+                            <input
+                                type="checkbox"
+                                name="inputAlterTheme"
+                                id="inputTheme"
+                                class="themeToggle"
+                                aria-label="Alterar tema"
+                            />
+                            <i class="bx bx-sun iconSun" aria-hidden="true"></i>
+                            <i
+                                class="bx bx-moon iconMoon"
+                                aria-hidden="true"
+                            ></i>
+                        </label>
+
+                        <details class="languageContainer">
+                            <summary>
+                                <img
+                                    src="./assets/images/decorationsImages/brazil.png"
+                                    alt="Bandeira do Brasil"
+                                    class="imgFlag"
+                                />
+                                <p class="language">Português</p>
+                                <i class="bx bx-chevron-down arrowLang"></i>
+                            </summary>
+                            <ul class="optionsLang" role="listbox">
+                                <li class="langs active">
+                                    <img
+                                        src="./assets/images/decorationsImages/brazil.png"
+                                        alt="Bandeira do Brasil"
+                                        class="imgFlag"
+                                    />
+                                    <p class="language">Português</p>
+                                </li>
+                                <li class="langs">
+                                    <img
+                                        src="./assets/images/decorationsImages/usa.png"
+                                        alt="Bandeira dos Estados Unidos"
+                                        class="imgFlag"
+                                    />
+                                    <p class="language">Inglês</p>
+                                </li>
+                                <li class="langs">
+                                    <img
+                                        src="./assets/images/decorationsImages/spain.png"
+                                        alt="Bandeira da Espanha"
+                                        class="imgFlag"
+                                    />
+                                    <p class="language">Espanhol</p>
+                                </li>
+                            </ul>
+                        </details>
+                    </div>
+                </nav>
+                <nav class="menuNavMobile">
+                    <label for="inputTheme" class="theme">
+                        <input
+                            type="checkbox"
+                            name="inputAlterTheme"
+                            id="inputTheme"
+                            class="themeToggle"
+                            aria-label="Alterar tema"
+                        />
+                        <i class="bx bx-sun iconSun" aria-hidden="true"></i>
+                        <i class="bx bx-moon iconMoon" aria-hidden="true"></i>
+                    </label>
+                    <details class="navMobile">
+                        <summary>
+                            <i class="menuIcon"></i>
+                        </summary>
+                        <ul class="navContainer">
+                            <li class="navItem">
+                                <a
+                                    href="#aboutContainer"
+                                    class="link"
+                                    title="Ir para a seção Sobre"
+                                    aria-label="Ir para a seção Sobre"
+                                    >Sobre</a
+                                >
+                            </li>
+                            <li class="navItem">
+                                <a
+                                    href="#projectsContainer"
+                                    class="link"
+                                    title="Ir para a seção Projetos"
+                                    aria-label="Ir para a seção Projetos"
+                                    >Projetos</a
+                                >
+                            </li>
+                            <li class="navItem">
+                                <a
+                                    href="#contactsContainer"
+                                    class="link"
+                                    title="Ir para a seção Contato"
+                                    aria-label="Ir para a seção Contato"
+                                    >Contato</a
+                                >
+                            </li>
+                            <li>
+                                <div class="settings">
+                                    <details class="languageContainer">
+                                        <summary>
+                                            <img
+                                                src="./assets/images/decorationsImages/brazil.png"
+                                                alt="Bandeira do Brasil"
+                                                class="imgFlag"
+                                            />
+                                            <p class="language">Português</p>
+                                            <i
+                                                class="bx bx-chevron-down arrowLang"
+                                            ></i>
+                                        </summary>
+                                        <ul class="optionsLang" role="listbox">
+                                            <li class="langs active">
+                                                <img
+                                                    src="./assets/images/decorationsImages/brazil.png"
+                                                    alt="Bandeira do Brasil"
+                                                    class="imgFlag"
+                                                />
+                                                <p class="language">
+                                                    Português
+                                                </p>
+                                            </li>
+                                            <li class="langs">
+                                                <img
+                                                    src="./assets/images/decorationsImages/usa.png"
+                                                    alt="Bandeira dos Estados Unidos"
+                                                    class="imgFlag"
+                                                />
+                                                <p class="language">Inglês</p>
+                                            </li>
+                                            <li class="langs">
+                                                <img
+                                                    src="./assets/images/decorationsImages/spain.png"
+                                                    alt="Bandeira da Espanha"
+                                                    class="imgFlag"
+                                                />
+                                                <p class="language">Espanhol</p>
+                                            </li>
+                                        </ul>
+                                    </details>
+                                </div>
+                            </li>
+                        </ul>
+                    </details>
+                </nav>
             </div>
         </header>
 
@@ -175,7 +271,7 @@
                         <i class="bx bxs-circle"></i>
                         <div class="tooltip">
                             <a
-                                href=""
+                                href="./assets/docs/curriculo.pdf"
                                 download
                                 title="Baixar meu Currículo"
                                 aria-label="Baixar Currículo"

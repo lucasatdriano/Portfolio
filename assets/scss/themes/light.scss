@@ -1,0 +1,92 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.light {
+    header {
+        @include theme(light, 'header');
+
+        .menuNavMobile {
+            .navMobile {
+                .menuIcon,
+                .menuIcon::after,
+                .menuIcon::before {
+                    background-color: $light-background-font;
+                }
+
+                .navContainer {
+                    @include theme(light, 'main');
+                }
+            }
+        }
+
+        .settings {
+            .languageContainer {
+                .optionsLang {
+                    @include theme(light, 'main');
+
+                    .langs {
+                        &:hover {
+                            @include theme(light, 'hover');
+                        }
+
+                        &.active {
+                            @include theme(light, 'hover');
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .buttonContainer {
+        @include theme(light);
+    }
+
+    main {
+        .hero {
+            .containerHero {
+                .heroDetails {
+                    .heroLine {
+                        @include theme(light, 'font');
+                    }
+                }
+            }
+        }
+
+        .waveContainer {
+            .numberOne {
+                background-image: url('/assets/images/decorationsImages/waveLightOne.svg');
+            }
+
+            .numberTwo {
+                background-image: url('/assets/images/decorationsImages/waveLightTwo.svg');
+            }
+        }
+
+        .profileContainer {
+            @include theme(light, 'accent');
+        }
+
+        .projects {
+            @include theme(light, 'accent');
+
+            .projectContainer {
+                @include theme(light);
+            }
+        }
+
+        .contact {
+            @include theme(light, 'accent');
+
+            .contactContainer {
+                .contactItem {
+                    @include theme(light);
+                }
+            }
+        }
+    }
+
+    footer {
+        @include theme(light, 'accent');
+    }
+}

@@ -1,0 +1,104 @@
+@import '../utils/mixins';
+@import '../utils/variables';
+
+.projectContainer {
+    @include theme(dark);
+    display: flex;
+    place-content: center;
+    padding-block: px-to-rem(10px);
+
+    &:nth-child(even) {
+        .contentProject {
+            grid-template-areas:
+                'title    title       image   '
+                'description description image'
+                'stack    links       image   ';
+
+            .linksProject {
+                justify-content: end;
+                flex-direction: row-reverse;
+            }
+
+            .stackContainer {
+                place-self: start;
+                place-items: start;
+            }
+        }
+    }
+
+    .contentProject {
+        display: grid;
+        max-width: 75%;
+        grid-template-areas:
+            'image    title       title   '
+            'image description description'
+            'image    links       stack   ';
+
+        .titleProject {
+            grid-area: title;
+            place-self: center;
+            @include responsive-size(32px, null, null);
+        }
+
+        .linkImage {
+            grid-area: image;
+            align-self: center;
+            margin-inline: 10px;
+
+            .imgDesktop {
+                height: px-to-rem(315px);
+                border-radius: 10px;
+                object-fit: contain;
+            }
+        }
+
+        .descriptionProject {
+            grid-area: description;
+            @include responsive-size(18px, 10px, null);
+            margin-block-start: px-to-rem(-5px);
+        }
+
+        .stackContainer {
+            grid-area: stack;
+            justify-self: end;
+            width: 500px;
+            display: grid;
+            justify-items: end;
+            gap: px-to-rem(5px);
+            font-family: $font-family-title;
+            @include responsive-size(22px, null, null);
+            padding-inline: px-to-rem(10px);
+
+            .stacks {
+                width: fit-content;
+            }
+
+            .stackDetails {
+                display: flex;
+                gap: px-to-rem(10px);
+                width: fit-content;
+
+                .techsInProject {
+                    display: grid;
+                    place-content: center;
+                    align-self: center;
+                }
+            }
+        }
+
+        .linksProject {
+            grid-area: links;
+            width: 100%;
+            place-self: start;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: px-to-rem(15px);
+            @include responsive-size(null, 15px, null);
+
+            .iconProject {
+                @include responsive-size(56px, null, null);
+            }
+        }
+    }
+}

@@ -1,0 +1,77 @@
+@import '../utils/mixins';
+@import '../utils/variables';
+
+.profileContainer {
+    scroll-margin-block-start: 5svh;
+    margin-block-start: px-to-rem(-160px);
+    position: relative;
+    z-index: 200;
+    @include theme(dark, 'accent');
+
+    .about {
+        width: 75vw;
+        margin: auto;
+        display: grid;
+        align-items: center;
+        @include responsive-size(null, 24px, null);
+        grid-template-areas: 'about about image' 'skills skills image';
+
+        .textContainer {
+            grid-area: about;
+            display: flex;
+            flex-direction: column;
+            padding: px-to-rem(20px);
+            max-width: 75%;
+
+            .textAboutMe {
+                @include responsive-size(20px, null, null);
+            }
+        }
+
+        .skills {
+            grid-area: skills;
+            display: flex;
+            flex-direction: column;
+            padding: px-to-rem(20px);
+            max-width: 75%;
+
+            h3 {
+                @include responsive-size(32px, null, null);
+            }
+
+            .stackContainer {
+                display: flex;
+                gap: px-to-rem(1px);
+                @include responsive-size(null, 16px, null);
+            }
+        }
+
+        .photoContainer {
+            grid-area: image;
+            position: relative;
+
+            img {
+                height: px-to-rem(700px);
+                border: 2px solid $color-details;
+                object-fit: cover;
+                position: relative;
+                z-index: 200;
+                border-radius: 150px 150px 10px 10px;
+            }
+
+            &::before {
+                content: '';
+                top: px-to-rem(25px);
+                left: px-to-rem(50px);
+                background-color: $color-shadow;
+                opacity: 0.5;
+                border: 2px solid $color-details;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                z-index: 100;
+                border-radius: 150px 150px 10px 10px;
+            }
+        }
+    }
+}

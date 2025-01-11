@@ -1,0 +1,95 @@
+@import '../utils/mixins';
+@import '../utils/variables';
+@import '../animations/animations';
+
+.hero {
+    padding-block-start: px-to-rem(100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80svh;
+
+    .containerHero {
+        padding-block-start: px-to-rem(128px);
+        display: grid;
+
+        .heroText {
+            display: grid;
+            place-content: center;
+            width: 100%;
+
+            .heroTitle {
+                -webkit-user-select: none;
+                user-select: none;
+                line-height: 0.9;
+                @include responsive-size(32px, null, null);
+
+                .titleSpan {
+                    font-family: $font-family-title;
+                    @include responsive-size(96px, null, null);
+
+                    &::after {
+                        content: '|';
+                        margin-left: px-to-rem(3px);
+                        opacity: 1;
+                        will-change: filter;
+                        animation: caret 0.7s infinite;
+                    }
+                }
+            }
+
+            .heroSubTitle {
+                @include responsive-size(40px, null, null);
+                font-family: $font-family-logo;
+                text-indent: 16px;
+            }
+        }
+
+        .heroDetails {
+            display: flex;
+            place-self: center;
+            align-items: center;
+            width: 75vw;
+            margin-block-start: px-to-rem(24px);
+
+            * {
+                padding-inline: px-to-rem(5px);
+            }
+
+            .heroLine {
+                width: 100%;
+                height: px-to-rem(3px);
+                border: none;
+                @include theme(dark, 'font');
+            }
+
+            [class*='circle'] {
+                @include responsive-size(12px, 10px, null);
+            }
+
+            .heroIcon {
+                cursor: pointer;
+                @include responsive-size(48px, null, null);
+            }
+        }
+    }
+
+    .scroll {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        will-change: transform;
+        animation: bounce 3s infinite;
+
+        .scrollText {
+            -webkit-user-select: none;
+            user-select: none;
+            text-align: center;
+            margin-block: px-to-rem(-2.5px);
+        }
+
+        i {
+            @include responsive-size(48px, null, null);
+        }
+    }
+}
