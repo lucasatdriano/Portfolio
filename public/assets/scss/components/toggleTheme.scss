@@ -30,4 +30,11 @@
     .iconMoon {
         transform: scale(0);
     }
+
+    @include respond-to('medium') {
+        [class*='icon'] {
+            @include responsive-size(48px, null, null);
+            padding-block-start: px-to-rem(5px);
+        }
+    }
 }

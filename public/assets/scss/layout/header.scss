@@ -25,6 +25,10 @@ header {
         .logo {
             white-space: nowrap;
             @include responsive-size(32px, 16px, null);
+
+            &::before {
+                content: '<Lucas Adriano/>';
+            }
         }
 
         .settings {
@@ -42,7 +46,7 @@ header {
 
                 summary {
                     @include responsive-size(null, 2.5px, null);
-                    border: 2px solid $light-color;
+                    border: 1px solid $dark-color;
                     border-radius: 5px;
                     display: flex;
                     align-items: center;
@@ -99,6 +103,10 @@ header {
         }
 
         @include respond-to('medium') {
+            .logo {
+                @include responsive-size(36px, null, null);
+            }
+
             .settings {
                 margin-block-start: px-to-rem(20px);
 
@@ -107,6 +115,16 @@ header {
                         margin-block-start: px-to-rem(15px);
                         right: 30px;
                     }
+                }
+            }
+        }
+
+        @include respond-to('small') {
+            .logo {
+                @include responsive-size(36px, null, null);
+
+                &::before {
+                    content: '<LA/>';
                 }
             }
         }

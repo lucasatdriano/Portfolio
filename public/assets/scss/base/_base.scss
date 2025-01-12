@@ -49,7 +49,7 @@ a {
 }
 
 .title {
-    @include responsive-size(48px, null, null);
+    @include responsive-size(42px, null, null);
     place-self: center;
     margin-block-end: px-to-rem(24px);
     position: relative;
@@ -76,72 +76,18 @@ a {
     background-clip: text;
 }
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-
-    .tooltipText {
-        font-family: $font-family-body;
-        visibility: hidden;
-        width: px-to-rem(120px);
-        @include theme(dark, 'hover');
-        text-align: center;
-        border-radius: 5px;
-        @include responsive-size(16px, 5px, null);
-        position: absolute;
-        z-index: 99;
-        bottom: 50%;
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 0;
-        transition: 0.3s ease-in-out;
-    }
-
-    &:hover .tooltipText {
-        visibility: visible;
-        bottom: 100%;
-        opacity: 1;
-    }
-}
-
-.hidden {
-    visibility: hidden;
-}
-
 .iconStack {
-    height: px-to-rem(56px);
-    border-radius: 10px;
+    height: 2.5vw;
+    min-height: px-to-rem(48px);
+    border-radius: 5px;
 }
 
-.light {
-    @include theme(light);
-
-    body {
-        @include theme(light);
-    }
-
-    *::-webkit-scrollbar-thumb {
-        @include theme(light);
-    }
-
-    *::-webkit-scrollbar {
-        @include theme(light, 'accent');
-    }
-
-    a {
-        color: $light-color;
-    }
-
+@include respond-to('small') {
     .title {
-        &::after {
-            @include theme(light, 'font');
-        }
+        @include responsive-size(36px, null, null);
     }
 
-    .tooltip {
-        .tooltipText {
-            @include theme(light, 'hover');
-        }
+    .iconStack {
+        min-height: px-to-rem(32px);
     }
 }

@@ -1,0 +1,127 @@
+@import '../utils/mixins';
+@import '../utils/variables';
+
+.profileContainer {
+    scroll-margin-block-start: 5svh;
+    margin-block-start: px-to-rem(-120px);
+    position: relative;
+    z-index: 200;
+    @include theme(dark, 'accent');
+
+    .about {
+        width: 75vw;
+        margin: auto;
+        display: grid;
+        align-items: center;
+        @include responsive-size(null, 24px, null);
+        grid-template-areas: 'title . ' 'about image ' 'skills .';
+        grid-template-columns: 1fr 1fr;
+
+        .aboutMe {
+            grid-area: title;
+        }
+
+        .textContainer {
+            grid-area: about;
+            height: 100%;
+
+            .textAboutMe {
+                @include responsive-size(16px, null, null);
+            }
+        }
+
+        .photoContainer {
+            grid-area: image;
+            display: grid;
+            place-items: center;
+            position: relative;
+            height: 100%;
+            flex: 1;
+            min-width: 100%;
+
+            img {
+                width: 100%;
+                max-width: px-to-rem(350px);
+                height: 100%;
+                max-height: px-to-rem(700px);
+                border: 2px solid $color-details;
+                object-fit: cover;
+                position: relative;
+                z-index: 200;
+                border-radius: 150px 150px 10px 10px;
+            }
+
+            &::before {
+                content: '';
+                top: 53%;
+                left: 55%;
+                transform: translate(-50%, -50%);
+                background-color: $color-shadow;
+                opacity: 0.5;
+                border: 2px solid $color-details;
+                height: 100%;
+                width: 100%;
+                max-width: px-to-rem(350px);
+                position: absolute;
+                z-index: 100;
+                border-radius: 150px 150px 10px 10px;
+            }
+        }
+
+        .skills {
+            grid-area: skills;
+            display: flex;
+            flex-direction: column;
+            padding: px-to-rem(20px);
+            width: 100%;
+
+            .subTitle {
+                @include responsive-size(28px, null, null);
+            }
+
+            .stackContainer {
+                display: flex;
+                gap: px-to-rem(10px);
+                @include responsive-size(null, 16px, null);
+            }
+        }
+    }
+
+    @include respond-to('wave') {
+        .about {
+            width: 90vw;
+            grid-template-columns: 1fr 2fr;
+        }
+    }
+
+    @media (max-width: 1100px) {
+        & {
+            margin-block-start: px-to-rem(-160px);
+
+            .about {
+                @include responsive-size(null, 0px, null);
+                grid-template-areas: 'title' 'image' 'about' 'skills';
+                grid-template-columns: 1fr;
+
+                .textContainer {
+                    padding-block-start: px-to-rem(20px);
+                }
+            }
+        }
+    }
+
+    @include respond-to('medium') {
+        .textContainer {
+            .textAboutMe {
+                max-width: 100%;
+                @include responsive-size(24px, null, null);
+            }
+        }
+
+        .skills {
+            .stackContainer {
+                flex-wrap: wrap;
+            }
+        }
+    }
+}

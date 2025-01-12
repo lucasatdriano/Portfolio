@@ -5,8 +5,9 @@
 .hero {
     padding-block-start: px-to-rem(100px);
     display: flex;
+    gap: px-to-rem(25px);
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 80svh;
 
     .containerHero {
@@ -71,6 +72,16 @@
                 cursor: pointer;
                 @include responsive-size(48px, null, null);
             }
+
+            @include respond-to('medium') {
+                * {
+                    padding-inline: px-to-rem(2.5px);
+                }
+
+                [class*='circle'] {
+                    @include responsive-size(8px, 5px, null);
+                }
+            }
         }
     }
 
@@ -90,6 +101,25 @@
 
         i {
             @include responsive-size(48px, null, null);
+        }
+    }
+
+    @include respond-to('small') {
+        .containerHero {
+            padding-block-start: px-to-rem(96px);
+
+            .heroText {
+                .heroTitle {
+                    @include responsive-size(26px, null, null);
+                    .titleSpan {
+                        @include responsive-size(72px, null, null);
+                    }
+                }
+
+                .heroSubTitle {
+                    @include responsive-size(28px, null, null);
+                }
+            }
         }
     }
 }

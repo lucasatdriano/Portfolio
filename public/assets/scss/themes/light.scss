@@ -2,6 +2,36 @@
 @import '../utils/mixins';
 
 .light {
+    @include theme(light);
+
+    body {
+        @include theme(light);
+    }
+
+    *::-webkit-scrollbar-thumb {
+        @include theme(light);
+    }
+
+    *::-webkit-scrollbar {
+        @include theme(light, 'accent');
+    }
+
+    a {
+        color: $light-color;
+    }
+
+    .title {
+        &::after {
+            @include theme(light, 'font');
+        }
+    }
+
+    .tooltip {
+        .tooltipText {
+            @include theme(light, 'hover');
+        }
+    }
+
     header {
         @include theme(light, 'header');
 
@@ -55,11 +85,11 @@
 
         .waveContainer {
             .numberOne {
-                background-image: url('/assets/images/decorationsImages/waveLightOne.svg');
+                background-image: url('/public/assets/images/decorationsImages/waveLightOne.svg');
             }
 
             .numberTwo {
-                background-image: url('/assets/images/decorationsImages/waveLightTwo.svg');
+                background-image: url('/public/assets/images/decorationsImages/waveLightTwo.svg');
             }
         }
 

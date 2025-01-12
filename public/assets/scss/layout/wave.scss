@@ -1,0 +1,49 @@
+@import '../utils/mixins';
+
+.waveContainer {
+    position: relative;
+    overflow: hidden;
+    z-index: 100;
+    height: px-to-rem(500px);
+    margin-block-start: px-to-rem(-192px);
+
+    .parallaxWave {
+        position: absolute;
+        bottom: 0;
+        display: block;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        width: 100vw;
+        height: 435px;
+
+        &.numberOne {
+            background-image: url('/public/assets/images/decorationsImages/waveDarkOne.svg');
+            margin-left: px-to-rem(-200px);
+        }
+
+        &.numberTwo {
+            background-image: url('/public/assets/images/decorationsImages/waveDarkTwo.svg');
+        }
+    }
+
+    @include respond-to('wave') {
+        .parallaxWave {
+            width: 160vw;
+
+            &.numberOne {
+                margin-left: px-to-rem(-325px);
+            }
+        }
+    }
+
+    @include respond-to('small') {
+        .parallaxWave {
+            width: 200vw;
+
+            &.numberOne {
+                margin-left: px-to-rem(-325px);
+            }
+        }
+    }
+}

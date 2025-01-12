@@ -29,8 +29,8 @@
                 display: grid;
                 place-content: center;
                 border-radius: 60px;
-                width: px-to-rem(80px);
-                height: px-to-rem(80px);
+                width: px-to-rem(75px);
+                height: px-to-rem(75px);
                 @include transition(width);
 
                 &:hover {
@@ -48,7 +48,7 @@
                 }
 
                 .iconContact {
-                    @include responsive-size(38px, null, null);
+                    @include responsive-size(42px, null, null);
                     position: absolute;
                     left: 50%;
                     top: 50%;
@@ -65,6 +65,44 @@
                     transform: translate(-50%, -50%);
                     scale: 0;
                     @include responsive-size(20px, null, null);
+                }
+            }
+        }
+    }
+
+    @include respond-to('wave') {
+        .contactContainer {
+            .contactItem {
+                .linkContact {
+                    width: px-to-rem(50px);
+                    height: px-to-rem(50px);
+
+                    .iconContact {
+                        @include responsive-size(54px, null, null);
+                    }
+
+                    .textContact {
+                        @include responsive-size(22px, null, null);
+                    }
+                }
+            }
+        }
+    }
+
+    @include respond-to('medium') {
+        .contactContainer {
+            .contactItem {
+                width: px-to-rem(65px);
+                height: px-to-rem(65px);
+
+                .linkContact {
+                    .iconContact {
+                        @include responsive-size(46px, null, null);
+                    }
+
+                    .textContact {
+                        @include responsive-size(28px, null, null);
+                    }
                 }
             }
         }

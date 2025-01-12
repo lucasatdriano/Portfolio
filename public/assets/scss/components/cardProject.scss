@@ -37,7 +37,7 @@
         .titleProject {
             grid-area: title;
             place-self: center;
-            @include responsive-size(32px, null, null);
+            @include responsive-size(30px, null, null);
         }
 
         .linkImage {
@@ -46,7 +46,9 @@
             margin-inline: 10px;
 
             .imgDesktop {
-                height: px-to-rem(315px);
+                height: 100%;
+                max-height: 15vh;
+                min-height: px-to-rem(215px);
                 border-radius: 10px;
                 object-fit: contain;
             }
@@ -54,14 +56,14 @@
 
         .descriptionProject {
             grid-area: description;
-            @include responsive-size(18px, 10px, null);
+            @include responsive-size(16px, 10px, null);
             margin-block-start: px-to-rem(-5px);
         }
 
         .stackContainer {
             grid-area: stack;
             justify-self: end;
-            width: 500px;
+            width: 100%;
             display: grid;
             justify-items: end;
             gap: px-to-rem(5px);
@@ -98,6 +100,69 @@
 
             .iconProject {
                 @include responsive-size(56px, null, null);
+            }
+        }
+    }
+
+    @include respond-to('wave') {
+        &:nth-child(even) {
+            .contentProject {
+                grid-template-areas:
+                    'image       image       image'
+                    'title       title       title'
+                    'description description description'
+                    'links       stack       stack';
+
+                .linksProject {
+                    flex-direction: row;
+                    justify-content: start;
+                }
+
+                .stackContainer {
+                    place-items: end;
+                }
+            }
+        }
+
+        .contentProject {
+            grid-template-areas:
+                'image       image       image'
+                'title       title       title'
+                'description description description'
+                'links       stack       stack';
+
+            .titleProject {
+                @include responsive-size(36px, null, null);
+            }
+
+            .linkImage {
+                text-align: center;
+
+                .imgDesktop {
+                    height: 100%;
+                    max-height: 25vw;
+                }
+            }
+
+            .descriptionProject {
+                text-align: center;
+            }
+
+            .stackContainer {
+                justify-self: start;
+                place-items: end;
+            }
+
+            .linksProject {
+                height: 100%;
+            }
+        }
+    }
+
+    @include respond-to('small') {
+        .contentProject {
+            .titleProject {
+                @include responsive-size(28px, null, null);
             }
         }
     }

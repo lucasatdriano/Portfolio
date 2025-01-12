@@ -1,0 +1,29 @@
+@import '../utils/mixins';
+
+footer {
+    @include theme(dark, 'accent');
+    display: grid;
+    place-items: center;
+
+    .logo {
+        flex-wrap: nowrap;
+        @include responsive-size(52px, null, 64px);
+    }
+
+    .footerText {
+        @include responsive-size(12px, 8px, null);
+        place-self: start;
+    }
+
+    @include respond-to('medium') {
+        .logo {
+            @include responsive-size(42px, null, null);
+        }
+    }
+
+    @include respond-to('small') {
+        .logo {
+            @include responsive-size(36px, null, null);
+        }
+    }
+}
