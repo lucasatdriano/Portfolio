@@ -1,13 +1,8 @@
-@import '../utils/mixins';
-@import '../utils/variables';
-
 header {
     @include theme(dark, 'header');
     width: 100vw;
+    height: auto;
     box-shadow: 4px 4px 10px $color-shadow;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     position: fixed;
     z-index: 999;
     -webkit-backdrop-filter: blur(10px);
@@ -104,7 +99,7 @@ header {
 
         @include respond-to('medium') {
             .logo {
-                @include responsive-size(36px, null, null);
+                @include responsive-size(36px, 8px, null);
             }
 
             .settings {

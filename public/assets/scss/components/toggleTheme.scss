@@ -1,6 +1,3 @@
-@import '../utils/mixins';
-@import '../utils/variables';
-
 .theme {
     display: flex;
     align-items: center;
@@ -17,7 +14,7 @@
         }
 
         &:checked ~ .iconMoon {
-            transform: scale(1) rotate(360deg);
+            transform: rotate(360deg) scale(1);
         }
     }
 
@@ -33,8 +30,8 @@
 
     @include respond-to('medium') {
         [class*='icon'] {
-            @include responsive-size(48px, null, null);
-            padding-block-start: px-to-rem(5px);
+            @include responsive-size(42px, null, null);
+            margin-block-start: px-to-rem(5px);
         }
     }
 }

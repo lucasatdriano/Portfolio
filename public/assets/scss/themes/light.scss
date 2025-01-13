@@ -1,6 +1,3 @@
-@import '../utils/variables';
-@import '../utils/mixins';
-
 .light {
     @include theme(light);
 
@@ -51,6 +48,10 @@
 
         .settings {
             .languageContainer {
+                summary {
+                    border: 1px solid $light-color;
+                }
+
                 .optionsLang {
                     @include theme(light, 'main');
 
@@ -85,11 +86,11 @@
 
         .waveContainer {
             .numberOne {
-                background-image: url('/public/assets/images/decorationsImages/waveLightOne.svg');
+                background-image: url('../images/decorationsImages/waveLightOne.svg');
             }
 
             .numberTwo {
-                background-image: url('/public/assets/images/decorationsImages/waveLightTwo.svg');
+                background-image: url('../images/decorationsImages/waveLightTwo.svg');
             }
         }
 

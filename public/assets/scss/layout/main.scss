@@ -4,9 +4,9 @@
 
 @import '../base/base';
 
-@import '../layout/header';
-@import '../layout/wave';
-@import '../layout/footer';
+@import 'header';
+@import 'wave';
+@import 'footer';
 
 @import '../sections/heroSection';
 @import '../sections/profileSection';

@@ -1,7 +1,3 @@
-@import '../utils/mixins';
-@import '../utils/variables';
-@import '../animations/animations';
-
 .hero {
     padding-block-start: px-to-rem(100px);
     display: flex;

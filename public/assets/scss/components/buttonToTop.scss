@@ -1,41 +1,67 @@
-@import '../utils/mixins';
-@import '../utils/variables';
-@import '../animations/animations';
-
-.buttonContainer {
-    cursor: pointer;
-    height: px-to-rem(65px);
-    width: px-to-rem(65px);
-    position: fixed;
-    bottom: px-to-rem(25px);
-    right: px-to-rem(-100px);
-    @include theme(dark);
-    box-shadow: 0 0 20px $color-shadow;
-    @include responsive-size(32px, null, null);
-    border-radius: 50%;
-    z-index: 999;
-    opacity: 0;
-    transition: right 0.5s ease, opacity 0.5s ease;
-
-    &:hover {
-        animation: bounce 1.5s infinite;
-    }
-
-    &.visible {
-        opacity: 1;
-        right: px-to-rem(25px);
-    }
-
-    &.hidden {
-        opacity: 0;
-        right: px-to-rem(-100px);
-    }
-
-    .buttonToTop {
-        display: grid;
-        place-content: center;
+main {
+    .buttonContainer {
+        cursor: pointer;
         height: px-to-rem(65px);
         width: px-to-rem(65px);
+        position: fixed;
+        bottom: px-to-rem(25px);
+        right: px-to-rem(25px);
+        @include theme(dark);
+        box-shadow: 0 0 20px $color-shadow;
+        @include responsive-size(32px, null, null);
         border-radius: 50%;
+        z-index: 999;
+        opacity: 0;
+        transform: translateX(100px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+
+        &:hover {
+            animation: bounce 1.5s infinite;
+        }
+
+        &.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        &.hidden {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+
+        .buttonToTop {
+            display: grid;
+            place-content: center;
+            height: px-to-rem(65px);
+            width: px-to-rem(65px);
+            border-radius: 50%;
+        }
     }
+
+    @include respond-to('medium') {
+        .buttonContainer {
+            height: px-to-rem(55px);
+            width: px-to-rem(55px);
+            bottom: px-to-rem(15px);
+            right: px-to-rem(15px);
+
+            .buttonToTop {
+                height: px-to-rem(55px);
+                width: px-to-rem(55px);
+            }
+        }
+    }
+
+    // @include respond-to('small') {
+    //     .buttonContainer {
+    //         height: px-to-rem(50px);
+    //         width: px-to-rem(50px);
+
+    //         .buttonToTop {
+    //             height: px-to-rem(50px);
+    //             width: px-to-rem(50px);
+    //         }
+    //     }
+    // }
 }

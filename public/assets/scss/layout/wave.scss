@@ -1,5 +1,3 @@
-@import '../utils/mixins';
-
 .waveContainer {
     position: relative;
     overflow: hidden;
@@ -18,12 +16,12 @@
         height: 435px;
 
         &.numberOne {
-            background-image: url('/public/assets/images/decorationsImages/waveDarkOne.svg');
+            background-image: url('/assets/images/decorationsImages/waveDarkOne.svg');
             margin-left: px-to-rem(-200px);
         }
 
         &.numberTwo {
-            background-image: url('/public/assets/images/decorationsImages/waveDarkTwo.svg');
+            background-image: url('/assets/images/decorationsImages/waveDarkTwo.svg');
         }
     }
 
@@ -40,10 +38,6 @@
     @include respond-to('small') {
         .parallaxWave {
             width: 200vw;
-
-            &.numberOne {
-                margin-left: px-to-rem(-325px);
-            }
         }
     }
 }

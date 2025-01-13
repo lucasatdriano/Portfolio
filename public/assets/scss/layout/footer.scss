@@ -1,5 +1,3 @@
-@import '../utils/mixins';
-
 footer {
     @include theme(dark, 'accent');
     display: grid;

@@ -1,6 +1,3 @@
-@import '../utils/mixins';
-@import '../utils/variables';
-
 .contact {
     @include theme(dark, 'accent');
     scroll-margin-block-start: 5svh;
@@ -26,11 +23,13 @@
             }
 
             .linkContact {
-                display: grid;
-                place-content: center;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
                 border-radius: 60px;
-                width: px-to-rem(75px);
-                height: px-to-rem(75px);
                 @include transition(width);
 
                 &:hover {
@@ -73,10 +72,10 @@
     @include respond-to('wave') {
         .contactContainer {
             .contactItem {
-                .linkContact {
-                    width: px-to-rem(50px);
-                    height: px-to-rem(50px);
+                width: px-to-rem(75px);
+                height: px-to-rem(75px);
 
+                .linkContact {
                     .iconContact {
                         @include responsive-size(54px, null, null);
                     }
@@ -91,17 +90,41 @@
 
     @include respond-to('medium') {
         .contactContainer {
+            gap: px-to-rem(25px);
+
+            .contactItem {
+                .linkContact {
+                    &:hover {
+                        width: px-to-rem(120px);
+                    }
+
+                    .iconContact {
+                        @include responsive-size(46px, null, null);
+                    }
+
+                    .textContact {
+                        @include responsive-size(26px, null, null);
+                    }
+                }
+            }
+        }
+    }
+
+    @include respond-to('small') {
+        .contactContainer {
+            gap: px-to-rem(15px);
+
             .contactItem {
                 width: px-to-rem(65px);
                 height: px-to-rem(65px);
 
                 .linkContact {
                     .iconContact {
-                        @include responsive-size(46px, null, null);
+                        @include responsive-size(40px, null, null);
                     }
 
                     .textContact {
-                        @include responsive-size(28px, null, null);
+                        @include responsive-size(20px, null, null);
                     }
                 }
             }

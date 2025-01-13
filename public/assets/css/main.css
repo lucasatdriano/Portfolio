@@ -10,9 +10,11 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   font-family: "Arial", sans-serif;
   font-size: 16px;
   line-height: 1.6;
+  position: relative;
   background-color: #2e2c2c;
   color: #f3eded;
 }
@@ -95,10 +97,8 @@ header {
   background: linear-gradient(to bottom, #393535, rgba(57, 54, 54, 0.3764705882));
   color: #f3eded;
   width: 100vw;
+  height: auto;
   box-shadow: 4px 4px 10px rgba(26, 24, 24, 0.4941176471);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: fixed;
   z-index: 999;
   -webkit-backdrop-filter: blur(10px);
@@ -186,6 +186,7 @@ header .menu .settings .languageContainer .optionsLang .langs.active {
 @media (max-width: 850px) {
   header .menu .logo {
     font-size: clamp(1.6875rem, 2vw, 2.7rem);
+    padding: 0.5rem;
   }
   header .menu .settings {
     margin-block-start: 1.25rem;
@@ -222,11 +223,11 @@ header .menu .settings .languageContainer .optionsLang .langs.active {
   height: 435px;
 }
 .waveContainer .parallaxWave.numberOne {
-  background-image: url("/public/assets/images/decorationsImages/waveDarkOne.svg");
+  background-image: url("/assets/images/decorationsImages/waveDarkOne.svg");
   margin-left: -12.5rem;
 }
 .waveContainer .parallaxWave.numberTwo {
-  background-image: url("/public/assets/images/decorationsImages/waveDarkTwo.svg");
+  background-image: url("/assets/images/decorationsImages/waveDarkTwo.svg");
 }
 @media (max-width: 1350px) {
   .waveContainer .parallaxWave {
@@ -239,9 +240,6 @@ header .menu .settings .languageContainer .optionsLang .langs.active {
 @media (max-width: 600px) {
   .waveContainer .parallaxWave {
     width: 200vw;
-  }
-  .waveContainer .parallaxWave.numberOne {
-    margin-left: -20.3125rem;
   }
 }
 
@@ -272,25 +270,6 @@ footer .footerText {
   }
 }
 
-@keyframes caret {
-  0%, 100% {
-    filter: opacity(1);
-  }
-  50% {
-    filter: opacity(0);
-  }
-}
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-20px);
-  }
-  60% {
-    transform: translateY(-10px);
-  }
-}
 .hero {
   padding-block-start: 6.25rem;
   display: flex;
@@ -475,7 +454,6 @@ footer .footerText {
 @media (max-width: 1350px) {
   .profileContainer .about {
     width: 90vw;
-    grid-template-columns: 1fr 2fr;
   }
 }
 @media (max-width: 1100px) {
@@ -483,20 +461,43 @@ footer .footerText {
     margin-block-start: -10rem;
   }
   .profileContainer .about {
-    padding: 0rem;
+    padding-block-start: 3.125rem;
     grid-template-areas: "title" "image" "about" "skills";
     grid-template-columns: 1fr;
+  }
+  .profileContainer .about .photoContainer img {
+    max-width: 14.0625rem;
+    max-height: 21.875rem;
+  }
+  .profileContainer .about .photoContainer::before {
+    max-width: 14.0625rem;
   }
   .profileContainer .about .textContainer {
     padding-block-start: 1.25rem;
   }
 }
 @media (max-width: 850px) {
-  .profileContainer .textContainer .textAboutMe {
+  .profileContainer .about .textContainer .textAboutMe {
     max-width: 100%;
     font-size: clamp(1.125rem, 2vw, 1.8rem);
   }
-  .profileContainer .skills .stackContainer {
+  .profileContainer .about .skills .stackContainer {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 600px) {
+  .profileContainer .about .photoContainer img {
+    max-width: 12.5rem;
+    max-height: 21.875rem;
+  }
+  .profileContainer .about .photoContainer::before {
+    max-width: 12.5rem;
+  }
+  .profileContainer .about .textContainer .textAboutMe {
+    max-width: 100%;
+    font-size: clamp(1.125rem, 2vw, 1.8rem);
+  }
+  .profileContainer .about .skills .stackContainer {
     flex-wrap: wrap;
   }
 }
@@ -509,6 +510,11 @@ footer .footerText {
   gap: 0.625rem;
   background-color: #292626;
   color: #f3eded;
+}
+@media (max-width: 1100px) {
+  .projects {
+    padding-block-start: 1.5625rem;
+  }
 }
 
 .contact {
@@ -537,11 +543,13 @@ footer .footerText {
   width: 11.25rem;
 }
 .contact .contactContainer .contactItem .linkContact {
-  display: grid;
-  place-content: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 60px;
-  width: 4.6875rem;
-  height: 4.6875rem;
   transition: width 0.3s ease;
 }
 .contact .contactContainer .contactItem .linkContact:hover {
@@ -574,9 +582,9 @@ footer .footerText {
   font-size: clamp(0.9375rem, 2vw, 1.5rem);
 }
 @media (max-width: 1350px) {
-  .contact .contactContainer .contactItem .linkContact {
-    width: 3.125rem;
-    height: 3.125rem;
+  .contact .contactContainer .contactItem {
+    width: 4.6875rem;
+    height: 4.6875rem;
   }
   .contact .contactContainer .contactItem .linkContact .iconContact {
     font-size: clamp(2.53125rem, 2vw, 4.05rem);
@@ -586,44 +594,42 @@ footer .footerText {
   }
 }
 @media (max-width: 850px) {
-  .contact .contactContainer .contactItem {
-    width: 4.0625rem;
-    height: 4.0625rem;
+  .contact .contactContainer {
+    gap: 1.5625rem;
+  }
+  .contact .contactContainer .contactItem .linkContact:hover {
+    width: 7.5rem;
   }
   .contact .contactContainer .contactItem .linkContact .iconContact {
     font-size: clamp(2.15625rem, 2vw, 3.45rem);
   }
   .contact .contactContainer .contactItem .linkContact .textContact {
-    font-size: clamp(1.3125rem, 2vw, 2.1rem);
+    font-size: clamp(1.21875rem, 2vw, 1.95rem);
+  }
+}
+@media (max-width: 600px) {
+  .contact .contactContainer {
+    gap: 0.9375rem;
+  }
+  .contact .contactContainer .contactItem {
+    width: 4.0625rem;
+    height: 4.0625rem;
+  }
+  .contact .contactContainer .contactItem .linkContact .iconContact {
+    font-size: clamp(1.875rem, 2vw, 3rem);
+  }
+  .contact .contactContainer .contactItem .linkContact .textContact {
+    font-size: clamp(0.9375rem, 2vw, 1.5rem);
   }
 }
 
-@keyframes caret {
-  0%, 100% {
-    filter: opacity(1);
-  }
-  50% {
-    filter: opacity(0);
-  }
-}
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-20px);
-  }
-  60% {
-    transform: translateY(-10px);
-  }
-}
-.buttonContainer {
+main .buttonContainer {
   cursor: pointer;
   height: 4.0625rem;
   width: 4.0625rem;
   position: fixed;
   bottom: 1.5625rem;
-  right: -6.25rem;
+  right: 1.5625rem;
   background-color: #2e2c2c;
   color: #f3eded;
   box-shadow: 0 0 20px rgba(26, 24, 24, 0.4941176471);
@@ -631,25 +637,39 @@ footer .footerText {
   border-radius: 50%;
   z-index: 999;
   opacity: 0;
-  transition: right 0.5s ease, opacity 0.5s ease;
+  transform: translateX(100px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.buttonContainer:hover {
+main .buttonContainer:hover {
   animation: bounce 1.5s infinite;
 }
-.buttonContainer.visible {
+main .buttonContainer.visible {
   opacity: 1;
-  right: 1.5625rem;
+  visibility: visible;
+  transform: translateX(0);
 }
-.buttonContainer.hidden {
+main .buttonContainer.hidden {
   opacity: 0;
-  right: -6.25rem;
+  transform: translateX(100px);
 }
-.buttonContainer .buttonToTop {
+main .buttonContainer .buttonToTop {
   display: grid;
   place-content: center;
   height: 4.0625rem;
   width: 4.0625rem;
   border-radius: 50%;
+}
+@media (max-width: 850px) {
+  main .buttonContainer {
+    height: 3.4375rem;
+    width: 3.4375rem;
+    bottom: 0.9375rem;
+    right: 0.9375rem;
+  }
+  main .buttonContainer .buttonToTop {
+    height: 3.4375rem;
+    width: 3.4375rem;
+  }
 }
 
 .projectContainer {
@@ -743,9 +763,6 @@ footer .footerText {
     flex-direction: row;
     justify-content: start;
   }
-  .projectContainer:nth-child(even) .contentProject .stackContainer {
-    place-items: end;
-  }
   .projectContainer .contentProject {
     grid-template-areas: "image       image       image" "title       title       title" "description description description" "links       stack       stack";
   }
@@ -764,15 +781,33 @@ footer .footerText {
   }
   .projectContainer .contentProject .stackContainer {
     justify-self: start;
-    place-items: end;
+  }
+  .projectContainer .contentProject .stackContainer .stackDetails {
+    flex-wrap: wrap;
   }
   .projectContainer .contentProject .linksProject {
+    justify-content: center;
     height: 100%;
   }
 }
 @media (max-width: 600px) {
+  .projectContainer .contentProject {
+    max-width: 70%;
+  }
+  .projectContainer .contentProject .linkImage .imgDesktop {
+    height: 100%;
+    max-height: 15vh;
+    min-height: 9.375rem;
+  }
   .projectContainer .contentProject .titleProject {
     font-size: clamp(1.3125rem, 2vw, 2.1rem);
+  }
+  .projectContainer .contentProject .linksProject {
+    gap: 0.625rem;
+    padding: 0.3125rem;
+  }
+  .projectContainer .contentProject .linksProject .iconProject {
+    font-size: clamp(1.96875rem, 2vw, 3.15rem);
   }
 }
 
@@ -836,18 +871,18 @@ footer .footerText {
   display: block;
   cursor: pointer;
   border-radius: 2em;
-  width: 2.25em;
-  height: 0.25em;
+  width: 1.75em;
+  height: 0.175em;
   position: absolute;
   background-color: #f3eded;
   transition: all 200ms linear;
 }
 .menuNavMobile .navMobile .menuIcon::after {
-  transform: translateY(0.9em);
+  transform: translateY(0.7em);
   top: -2px;
 }
 .menuNavMobile .navMobile .menuIcon::before {
-  transform: translateY(-0.75em);
+  transform: translateY(-0.5833333333em);
 }
 .menuNavMobile .navMobile .navContainer {
   background-color: #2e2c2c;
@@ -911,7 +946,7 @@ footer .footerText {
   transform: rotate(360deg) scale(0);
 }
 .theme .themeToggle:checked ~ .iconMoon {
-  transform: scale(1) rotate(360deg);
+  transform: rotate(360deg) scale(1);
 }
 .theme [class*=icon] {
   position: absolute;
@@ -923,8 +958,8 @@ footer .footerText {
 }
 @media (max-width: 850px) {
   .theme [class*=icon] {
-    font-size: clamp(2.25rem, 2vw, 3.6rem);
-    padding-block-start: 0.3125rem;
+    font-size: clamp(1.96875rem, 2vw, 3.15rem);
+    margin-block-start: 0.3125rem;
   }
 }
 
@@ -1020,6 +1055,9 @@ footer .footerText {
   background-color: #d6d2d2;
   color: #0a0505;
 }
+.light header .settings .languageContainer summary {
+  border: 1px solid #0a0505;
+}
 .light header .settings .languageContainer .optionsLang {
   background-color: #d6d2d2;
   color: #0a0505;
@@ -1041,10 +1079,10 @@ footer .footerText {
   color: #0a0505;
 }
 .light main .waveContainer .numberOne {
-  background-image: url("/public/assets/images/decorationsImages/waveLightOne.svg");
+  background-image: url("../images/decorationsImages/waveLightOne.svg");
 }
 .light main .waveContainer .numberTwo {
-  background-image: url("/public/assets/images/decorationsImages/waveLightTwo.svg");
+  background-image: url("../images/decorationsImages/waveLightTwo.svg");
 }
 .light main .profileContainer {
   background-color: #e4e2e2;

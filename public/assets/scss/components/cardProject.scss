@@ -1,6 +1,3 @@
-@import '../utils/mixins';
-@import '../utils/variables';
-
 .projectContainer {
     @include theme(dark);
     display: flex;
@@ -117,10 +114,6 @@
                     flex-direction: row;
                     justify-content: start;
                 }
-
-                .stackContainer {
-                    place-items: end;
-                }
             }
         }
 
@@ -150,10 +143,13 @@
 
             .stackContainer {
                 justify-self: start;
-                place-items: end;
+                .stackDetails {
+                    flex-wrap: wrap;
+                }
             }
 
             .linksProject {
+                justify-content: center;
                 height: 100%;
             }
         }
@@ -161,8 +157,26 @@
 
     @include respond-to('small') {
         .contentProject {
+            max-width: 70%;
+            .linkImage {
+                .imgDesktop {
+                    height: 100%;
+                    max-height: 15vh;
+                    min-height: px-to-rem(150px);
+                }
+            }
+
             .titleProject {
                 @include responsive-size(28px, null, null);
+            }
+
+            .linksProject {
+                gap: px-to-rem(10px);
+                @include responsive-size(null, 5px, null);
+
+                .iconProject {
+                    @include responsive-size(42px, null, null);
+                }
             }
         }
     }

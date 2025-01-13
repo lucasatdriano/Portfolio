@@ -16,7 +16,7 @@ items.forEach((item) => {
     });
 });
 
-//
+// function para escrever nome na seção Hero
 const titulo = document.querySelector('.titleSpan');
 
 function typeWrite(element) {
@@ -28,7 +28,7 @@ function typeWrite(element) {
 }
 typeWrite(titulo);
 
-//
+// function para ativar o link de ancoragem no header
 document.addEventListener('scroll', function () {
     const sections = document.querySelectorAll('section');
     const menuLinks = document.querySelectorAll('.menuNavDesktop a');
@@ -52,6 +52,7 @@ document.addEventListener('scroll', function () {
     });
 });
 
+// function para visibiladde do buttonToTop
 const toTopBtn = document.querySelector('#toTopBtn');
 
 window.onscroll = function () {
@@ -66,26 +67,34 @@ function scrollFunction() {
         toTopBtn.classList.add('visible');
         toTopBtn.classList.remove('hidden');
     } else {
-        toTopBtn.classList.add('hidden');
         toTopBtn.classList.remove('visible');
+        setTimeout(() => {
+            toTopBtn.classList.add('hidden');
+        }, 200);
     }
 }
 
-//
-const inputCheck = document.querySelector('#inputTheme');
+// function para alternar entre os temas claro e escuro
+const inputsCheck = document.querySelectorAll('.themeToggle');
 const body = document.body;
 
-if (localStorage.getItem('light') === 'enabled') {
-    body.classList.add('light');
-    inputCheck.checked = true;
-}
-
-inputCheck.addEventListener('change', () => {
-    if (inputCheck.checked) {
+inputsCheck.forEach((inputCheck) => {
+    if (localStorage.getItem('lightMode') == 'enabled') {
         body.classList.add('light');
-        localStorage.setItem('lightMode', 'enabled');
-    } else {
-        body.classList.remove('light');
-        localStorage.setItem('lightMode', 'disabled');
+        inputCheck.checked = true;
     }
 });
+
+inputsCheck.forEach((inputCheck) => {
+    inputCheck.addEventListener('change', () => {
+        if (inputCheck.checked) {
+            body.classList.add('light');
+            localStorage.setItem('lightMode', 'enabled');
+        } else {
+            body.classList.remove('light');
+            localStorage.setItem('lightMode', 'disabled');
+        }
+    });
+});
+
+// function para abrir e fechar icon do menuNavMobile

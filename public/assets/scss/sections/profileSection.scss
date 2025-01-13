@@ -1,6 +1,3 @@
-@import '../utils/mixins';
-@import '../utils/variables';
-
 .profileContainer {
     scroll-margin-block-start: 5svh;
     margin-block-start: px-to-rem(-120px);
@@ -90,7 +87,6 @@
     @include respond-to('wave') {
         .about {
             width: 90vw;
-            grid-template-columns: 1fr 2fr;
         }
     }
 
@@ -99,9 +95,21 @@
             margin-block-start: px-to-rem(-160px);
 
             .about {
-                @include responsive-size(null, 0px, null);
+                padding-block-start: px-to-rem(50px);
+                @include responsive-size(null, null, null);
                 grid-template-areas: 'title' 'image' 'about' 'skills';
                 grid-template-columns: 1fr;
+
+                .photoContainer {
+                    img {
+                        max-width: px-to-rem(225px);
+                        max-height: px-to-rem(350px);
+                    }
+
+                    &::before {
+                        max-width: px-to-rem(225px);
+                    }
+                }
 
                 .textContainer {
                     padding-block-start: px-to-rem(20px);
@@ -111,16 +119,46 @@
     }
 
     @include respond-to('medium') {
-        .textContainer {
-            .textAboutMe {
-                max-width: 100%;
-                @include responsive-size(24px, null, null);
+        .about {
+            .textContainer {
+                .textAboutMe {
+                    max-width: 100%;
+                    @include responsive-size(24px, null, null);
+                }
+            }
+
+            .skills {
+                .stackContainer {
+                    flex-wrap: wrap;
+                }
             }
         }
+    }
 
-        .skills {
-            .stackContainer {
-                flex-wrap: wrap;
+    @include respond-to('small') {
+        .about {
+            .photoContainer {
+                img {
+                    max-width: px-to-rem(200px);
+                    max-height: px-to-rem(350px);
+                }
+
+                &::before {
+                    max-width: px-to-rem(200px);
+                }
+            }
+
+            .textContainer {
+                .textAboutMe {
+                    max-width: 100%;
+                    @include responsive-size(24px, null, null);
+                }
+            }
+
+            .skills {
+                .stackContainer {
+                    flex-wrap: wrap;
+                }
             }
         }
     }
