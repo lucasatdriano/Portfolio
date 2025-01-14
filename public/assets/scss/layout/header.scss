@@ -26,6 +26,34 @@ header {
             }
         }
 
+        .btnLang {
+            @include responsive-size(22px, 2.5px, null);
+            border: 1px solid $dark-color;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            background: transparent;
+            color: $dark-color;
+
+            &.active .arrowLang {
+                transform: rotate(-180deg);
+            }
+
+            .arrowLang {
+                @include transition(transform);
+                transform: rotate(0deg);
+            }
+
+            * {
+                padding-inline: px-to-rem(5px);
+            }
+        }
+
+        .imgFlag {
+            height: px-to-rem(38px);
+        }
+
         .settings {
             display: flex;
             align-items: center;
@@ -33,46 +61,35 @@ header {
 
             .languageContainer {
                 position: relative;
-                rotate: 0deg;
 
-                &[open] summary .arrowLang {
-                    transform: rotate(-180deg);
-                }
-
-                summary {
-                    @include responsive-size(null, 2.5px, null);
-                    border: 1px solid $dark-color;
-                    border-radius: 5px;
-                    display: flex;
-                    align-items: center;
-                    cursor: pointer;
-
-                    .arrowLang {
-                        @include transition(transform);
-                        transform: rotate(0deg);
-                    }
-
-                    * {
-                        padding-inline: px-to-rem(5px);
-                    }
-                }
-
-                .imgFlag {
-                    height: px-to-rem(38px);
+                &.visible .optionsLang {
+                    max-height: 500px;
+                    opacity: 1;
                 }
 
                 .optionsLang {
                     margin-block-start: px-to-rem(5px);
-                    position: absolute;
-                    width: 100%;
+                    width: fit-content;
+                    max-height: 0px;
                     display: grid;
                     gap: px-to-rem(5px);
+                    position: absolute;
+                    right: 0;
+                    top: 50px;
                     @include theme(dark, 'main');
-                    box-shadow: 4px 4px 10px $color-shadow;
+                    box-shadow: 0 2px 15px $color-shadow;
                     -webkit-backdrop-filter: blur(15px);
                     backdrop-filter: blur(10px);
                     border-radius: 5px;
                     @include responsive-size(null, 5px, null);
+                    opacity: 0;
+                    overflow: hidden;
+                    transition: opacity 0.5s ease, max-height 0.5s ease;
+
+                    &.optionsLangMobile {
+                        top: 210px;
+                        left: -100px;
+                    }
 
                     .langs {
                         border-radius: 5px;
@@ -91,6 +108,12 @@ header {
 
                         &.active {
                             @include theme(dark, 'hover');
+                        }
+
+                        .langLink {
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
                         }
                     }
                 }

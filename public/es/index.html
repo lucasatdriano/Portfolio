@@ -15,22 +15,22 @@
 
         <link
             rel="alternate"
-            href="https://lucasadriano.com/pt"
+            href="https://lucasadriano-dev.web.app/pt-br/"
             hreflang="pt-BR"
         />
         <link
             rel="alternate"
-            href="https://lucasadriano.com/en"
+            href="https://lucasadriano-dev.web.app/en/"
             hreflang="en"
         />
         <link
             rel="alternate"
-            href="https://lucasadriano.com/es"
+            href="https://lucasadriano-dev.web.app/es/"
             hreflang="es"
         />
         <link
             rel="alternate"
-            href="https://lucasadriano.com/pt"
+            href="https://lucasadriano-dev.web.app/pt-br/"
             hreflang="x-default"
         />
 
@@ -50,13 +50,13 @@
             href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
             rel="stylesheet"
         />
-        <link href="assets/css/main.css" rel="stylesheet" />
+        <link href="../assets/css/main.css" rel="stylesheet" />
 
-        <script defer src="assets/js/script.js"></script>
+        <script defer src="../assets/js/script.js"></script>
 
         <link
             rel="icon"
-            href="assets/images/favicon/faviconCode.png"
+            href="../assets/images/favicon/faviconCode.png"
             type="image/x-icon"
         />
         <title>Lucas Adriano</title>
@@ -65,7 +65,12 @@
     <body>
         <header>
             <div class="menu" role="navigation">
-                <p class="logo"></p>
+                <a
+                    href="/"
+                    class="logo"
+                    title="Recarregar página"
+                    aria-label="Recarregar página"
+                ></a>
                 <nav class="menuNavDesktop">
                     <ul class="navDesktop">
                         <li class="navItem">
@@ -106,52 +111,127 @@
                                 aria-label="Alterar tema"
                             />
                             <i class="bx bx-sun iconSun" aria-hidden="true"></i>
+
                             <i
                                 class="bx bx-moon iconMoon"
                                 aria-hidden="true"
                             ></i>
                         </label>
 
-                        <details class="languageContainer">
-                            <summary>
+                        <nav class="languageContainer" id="navLanguage">
+                            <button
+                                type="button"
+                                class="btnLang"
+                                id="btnLangDesk"
+                            >
                                 <img
-                                    src="assets/images/decorationsImages/brazil.png"
-                                    alt="Bandeira do Brasil"
+                                    src="../assets/images/decorationsImages/spain.png"
+                                    alt="Bandera de España"
                                     class="imgFlag"
                                 />
-                                <p class="language">Português</p>
+                                <p class="language">Español</p>
                                 <i class="bx bx-chevron-down arrowLang"></i>
-                            </summary>
-                            <ul class="optionsLang" role="listbox">
+                            </button>
+                            <ul class="optionsLang">
                                 <li class="langs active">
-                                    <img
-                                        src="assets/images/decorationsImages/brazil.png"
-                                        alt="Bandeira do Brasil"
-                                        class="imgFlag"
-                                    />
-                                    <p class="language">Português</p>
+                                    <a
+                                        href="/"
+                                        class="langLink"
+                                        aria-label="Página em português (recarregar)"
+                                    >
+                                        <img
+                                            src="../assets/images/decorationsImages/spain.png"
+                                            alt="Bandera de España"
+                                            class="imgFlag"
+                                        />
+                                        <p class="language">Español</p>
+                                    </a>
                                 </li>
                                 <li class="langs">
-                                    <img
-                                        src="assets/images/decorationsImages/usa.png"
-                                        alt="Bandeira dos Estados Unidos"
-                                        class="imgFlag"
-                                    />
-                                    <p class="language">Inglês</p>
+                                    <a
+                                        href="/pt-br/index.html"
+                                        class="langLink"
+                                        title="Ir para a página em inglês"
+                                        aria-label="Ir para a página em inglês"
+                                    >
+                                        <img
+                                            src="../assets/images/decorationsImages/brazil.png"
+                                            alt="Bandera de Brasil"
+                                            class="imgFlag"
+                                        />
+                                        <p class="language">Portugués</p>
+                                    </a>
                                 </li>
                                 <li class="langs">
-                                    <img
-                                        src="assets/images/decorationsImages/spain.png"
-                                        alt="Bandeira da Espanha"
-                                        class="imgFlag"
-                                    />
-                                    <p class="language">Espanhol</p>
+                                    <a
+                                        href="/en/index.html"
+                                        class="langLink"
+                                        title="Ir para a página em espanhol"
+                                        aria-label="Ir para a página em espanhol"
+                                    >
+                                        <img
+                                            src="../assets/images/decorationsImages/usa.png"
+                                            alt="Bandera de Estados Unidos"
+                                            class="imgFlag"
+                                        />
+                                        <p class="language">Inglés</p>
+                                    </a>
                                 </li>
                             </ul>
-                        </details>
+                        </nav>
                     </div>
                 </nav>
                 <nav class="menuNavMobile">
+                    <div class="settings">
+                        <nav class="languageContainer" id="navLanguageMob">
+                            <ul class="optionsLang optionsLangMobile">
+                                <li class="langs active">
+                                    <a
+                                        href="/public/"
+                                        class="langLink"
+                                        aria-label="Página em português (recarregar)"
+                                    >
+                                        <img
+                                            src="../assets/images/decorationsImages/brazil.png"
+                                            alt="Bandeira do Brasil"
+                                            class="imgFlag"
+                                        />
+                                        <p class="language">Português</p>
+                                    </a>
+                                </li>
+                                <li class="langs">
+                                    <a
+                                        href="#"
+                                        class="langLink"
+                                        title="Ir para a página em inglês"
+                                        aria-label="Ir para a página em inglês"
+                                    >
+                                        <img
+                                            src="../assets/images/decorationsImages/usa.png"
+                                            alt="Bandeira dos Estados Unidos"
+                                            class="imgFlag"
+                                        />
+                                        <p class="language">Inglês</p>
+                                    </a>
+                                </li>
+                                <li class="langs">
+                                    <a
+                                        href="#"
+                                        class="langLink"
+                                        title="Ir para a página em espanhol"
+                                        aria-label="Ir para a página em espanhol"
+                                    >
+                                        <img
+                                            src="../assets/images/decorationsImages/spain.png"
+                                            alt="Bandeira da Espanha"
+                                            class="imgFlag"
+                                        />
+                                        <p class="language">Espanhol</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                     <label for="inputThemeMobile" class="theme">
                         <input
                             type="checkbox"
@@ -163,15 +243,13 @@
                         <i class="bx bx-sun iconSun" aria-hidden="true"></i>
                         <i class="bx bx-moon iconMoon" aria-hidden="true"></i>
                     </label>
-                    <details class="navMobile">
-                        <summary>
-                            <i class="menuIcon"></i>
-                        </summary>
+                    <nav class="navMobile" id="nav">
+                        <i class="menuIcon" id="btnMenuMob"></i>
                         <ul class="navContainer">
                             <li class="navItem">
                                 <a
                                     href="#aboutContainer"
-                                    class="link"
+                                    class="link linkMobile"
                                     title="Ir para a seção Sobre"
                                     aria-label="Ir para a seção Sobre"
                                     >Sobre</a
@@ -180,7 +258,7 @@
                             <li class="navItem">
                                 <a
                                     href="#projectsContainer"
-                                    class="link"
+                                    class="link linkMobile"
                                     title="Ir para a seção Projetos"
                                     aria-label="Ir para a seção Projetos"
                                     >Projetos</a
@@ -189,59 +267,29 @@
                             <li class="navItem">
                                 <a
                                     href="#contactsContainer"
-                                    class="link"
+                                    class="link linkMobile"
                                     title="Ir para a seção Contato"
                                     aria-label="Ir para a seção Contato"
                                     >Contato</a
                                 >
                             </li>
                             <li>
-                                <div class="settings">
-                                    <details class="languageContainer">
-                                        <summary>
-                                            <img
-                                                src="assets/images/decorationsImages/brazil.png"
-                                                alt="Bandeira do Brasil"
-                                                class="imgFlag"
-                                            />
-                                            <p class="language">Português</p>
-                                            <i
-                                                class="bx bx-chevron-down arrowLang"
-                                            ></i>
-                                        </summary>
-                                        <ul class="optionsLang" role="listbox">
-                                            <li class="langs active">
-                                                <img
-                                                    src="assets/images/decorationsImages/brazil.png"
-                                                    alt="Bandeira do Brasil"
-                                                    class="imgFlag"
-                                                />
-                                                <p class="language">
-                                                    Português
-                                                </p>
-                                            </li>
-                                            <li class="langs">
-                                                <img
-                                                    src="assets/images/decorationsImages/usa.png"
-                                                    alt="Bandeira dos Estados Unidos"
-                                                    class="imgFlag"
-                                                />
-                                                <p class="language">Inglês</p>
-                                            </li>
-                                            <li class="langs">
-                                                <img
-                                                    src="assets/images/decorationsImages/spain.png"
-                                                    alt="Bandeira da Espanha"
-                                                    class="imgFlag"
-                                                />
-                                                <p class="language">Espanhol</p>
-                                            </li>
-                                        </ul>
-                                    </details>
-                                </div>
+                                <button
+                                    type="button"
+                                    class="btnLang"
+                                    id="btnLangMobile"
+                                >
+                                    <img
+                                        src="../assets/images/decorationsImages/brazil.png"
+                                        alt="Bandeira do Brasil"
+                                        class="imgFlag"
+                                    />
+                                    <p class="language">Português</p>
+                                    <i class="bx bx-chevron-down arrowLang"></i>
+                                </button>
                             </li>
                         </ul>
-                    </details>
+                    </nav>
                 </nav>
             </div>
         </header>
@@ -249,7 +297,7 @@
         <main>
             <div class="tooltip buttonContainer" id="toTopBtn">
                 <a href="#" class="buttonToTop" aria-label="Voltar ao topo">
-                    <p>⭡</p>
+                    <i class="bx bx-up-arrow-alt"></i>
                 </a>
                 <span class="tooltipText" role="tooltip">Voltar ao Topo</span>
             </div>
@@ -270,10 +318,10 @@
                         <i class="bx bxs-circle"></i>
                         <div class="tooltip">
                             <a
-                                href="assets/docs/curriculo.pdf"
+                                href="../assets/docs/curriculo.pdf"
                                 download
                                 title="Baixar meu Currículo"
-                                aria-label="Baixar Currículo"
+                                aria-label="Baixe meu Currículo"
                             >
                                 <i class="bx bxs-file heroIcon"></i>
                             </a>
@@ -287,7 +335,7 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 title="Meu perfil do GitHub"
-                                aria-label="Visualizar perfil no GitHub"
+                                aria-label="Visualize meu perfil no GitHub"
                             >
                                 <i class="bx bxl-github heroIcon"></i>
                             </a>
@@ -301,7 +349,7 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 title="Meu perfil do LinkedIn"
-                                aria-label="Visualizar perfil no LinkedIn"
+                                aria-label="Visualize meu perfil no LinkedIn"
                             >
                                 <i class="bx bxl-linkedin-square heroIcon"></i>
                             </a>
@@ -358,7 +406,7 @@
                         <br />
 
                         <p class="textAboutMe">
-                            Sou <span class="spanColor">graduado</span> em
+                            Sou <span class="spanColor">formado</span> em
                             <span class="spanColor"
                                 >Análise e Desenvolvimento de Sistemas</span
                             >, e essa experiência me ajudou a aprofundar meu
@@ -390,6 +438,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Site da documentação do HTML"
+                                    aria-label="Visite a documentação do HTML"
                                 >
                                     <svg
                                         class="iconStack"
@@ -424,6 +473,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Site da documentação do CSS"
+                                    aria-label="Visite a documentação do CSS"
                                 >
                                     <svg
                                         class="iconStack"
@@ -466,6 +516,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Site da documentação do SASS"
+                                    aria-label="Visite a documentação do SASS"
                                 >
                                     <svg
                                         class="iconStack"
@@ -490,6 +541,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Site da documentação do TailwindCSS"
+                                    aria-label="Visite a documentação do TailwindCSS"
                                 >
                                     <svg
                                         class="iconStack"
@@ -512,6 +564,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Site da documentação do JavaScript"
+                                    aria-label="Visite a documentação do JavaScript"
                                 >
                                     <svg
                                         class="iconStack"
@@ -538,6 +591,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Site da documentação do TypeScript"
+                                    aria-label="Visite a documentação do TypeScript"
                                 >
                                     <svg
                                         class="iconStack"
@@ -565,6 +619,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Site da documentação do React"
+                                    aria-label="Visite a documentação do React"
                                 >
                                     <svg
                                         class="iconStack"
@@ -593,6 +648,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Site da documentação do Redux"
+                                    aria-label="Visite a documentação do Redux"
                                 >
                                     <svg
                                         class="iconStack"
@@ -615,6 +671,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Site da documentação do Git"
+                                    aria-label="Visite a documentação do Git"
                                 >
                                     <svg
                                         class="iconStack"
@@ -637,6 +694,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Site da documentação do Figma"
+                                    aria-label="Visite a documentação do Figma"
                                 >
                                     <svg
                                         class="iconStack"
@@ -672,7 +730,7 @@
                     </div>
                     <div class="photoContainer">
                         <img
-                            src="assets/images/test_portrait_image.png"
+                            src="../assets/images/test_portrait_image.png"
                             alt="Foto de Lucas Adriano"
                         />
                     </div>
@@ -692,7 +750,7 @@
                             class="linkImage"
                         >
                             <img
-                                src="assets/images/projectsImages/lemnosDesk.png"
+                                src="../assets/images/projectsImages/lemnosDesk.png"
                                 alt="Lemnos para desktops"
                                 class="imgDesktop"
                             />
@@ -762,6 +820,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title="Site da documentação do HTML"
+                                            aria-label="Visite a documentação do HTML"
                                             class="techsInProject"
                                         >
                                             <svg
@@ -797,6 +856,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title="Site da documentação do SASS"
+                                            aria-label="Visite a documentação do SASS"
                                             class="techsInProject"
                                         >
                                             <svg
@@ -822,6 +882,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title="Site da documentação do JavaScript"
+                                            aria-label="Visite a documentação do JavaScript"
                                             class="techsInProject"
                                         >
                                             <svg
@@ -849,6 +910,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title="Site da documentação do React"
+                                            aria-label="Visite a documentação do React"
                                             class="techsInProject"
                                         >
                                             <svg
@@ -878,6 +940,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title="Site da documentação do Redux"
+                                            aria-label="Visite a documentação do Redux"
                                             class="techsInProject"
                                         >
                                             <svg
@@ -901,6 +964,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title="Site da documentação do Git"
+                                            aria-label="Visite a documentação do Git"
                                             class="techsInProject"
                                         >
                                             <svg
@@ -924,6 +988,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title="Site da documentação do Figma"
+                                            aria-label="Visite a documentação do Figma"
                                             class="techsInProject"
                                         >
                                             <svg
@@ -972,7 +1037,7 @@
                             class="linkImage"
                         >
                             <img
-                                src="assets/images/projectsImages/alphaDesk.png"
+                                src="../assets/images/projectsImages/alphaDesk.png"
                                 alt="Lemnos para desktops"
                                 class="imgDesktop"
                             />
@@ -1034,6 +1099,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title="Site da documentação do HTML"
+                                            aria-label="Visite a documentação do HTML"
                                             class="techsInProject"
                                         >
                                             <svg
@@ -1069,6 +1135,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title="Site da documentação do CSS"
+                                            aria-label="Visite a documentação do CSS"
                                             class="techsInProject"
                                         >
                                             <svg
@@ -1112,6 +1179,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title="Site da documentação do JavaScript"
+                                            aria-label="Visite a documentação do JavaScript"
                                             class="techsInProject"
                                         >
                                             <svg
@@ -1139,6 +1207,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title="Site da documentação do Git"
+                                            aria-label="Visite a documentação do Git"
                                             class="techsInProject"
                                         >
                                             <svg
@@ -1162,6 +1231,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title="Site da documentação do Figma"
+                                            aria-label="Visite a documentação do Figma"
                                             class="techsInProject"
                                         >
                                             <svg
@@ -1201,16 +1271,16 @@
                 </article>
             </section>
 
-            <section
-                class="contact"
-                id="contactsContainer"
-                role="Contact Section"
-            >
+            <section class="contact" id="contactsContainer">
                 <h2 class="title">Contato</h2>
                 <ul class="contactContainer">
                     <li class="contactItem">
                         <a
                             href="https://www.linkedin.com/in/lucasadrianodev"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Meu perfil do LinkedIn"
+                            aria-label="Visualize meu perfil no LinkedIn"
                             class="linkContact"
                         >
                             <i class="bx bxl-linkedin-square iconContact"></i>
@@ -1220,6 +1290,10 @@
                     <li class="contactItem">
                         <a
                             href="https://www.instagram.com/__lgoncalves"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Meu perfil do Instagram"
+                            aria-label="Visualize meu perfil no Instagram"
                             class="linkContact"
                         >
                             <i class="bx bxl-instagram iconContact"></i
@@ -1227,7 +1301,14 @@
                         >
                     </li>
                     <li class="contactItem">
-                        <a href="#" class="linkContact">
+                        <a
+                            href="mailto:lucasatdiano@gmail.com?body=Olá%20Lucas,"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Meu e-mail profissional"
+                            aria-label="Envie um e-mail para mim"
+                            class="linkContact"
+                        >
                             <i class="bx bx-envelope iconContact"></i
                             ><span class="textContact">E-mail</span></a
                         >
@@ -1235,6 +1316,10 @@
                     <li class="contactItem">
                         <a
                             href="https://github.com/lucasatdriano"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Meu perfil do GitHub"
+                            aria-label="Visualize meu perfil no GitHub"
                             class="linkContact"
                             ><i class="bx bxl-github iconContact"></i>
                             <span class="textContact">GitHub</span></a

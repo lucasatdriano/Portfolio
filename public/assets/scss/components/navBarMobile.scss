@@ -3,10 +3,11 @@
     width: 100%;
     justify-content: end;
     align-items: center;
-    gap: px-to-rem(12px);
-    padding-inline-end: px-to-rem(54px);
+    padding-inline-end: px-to-rem(44px);
 
     .navMobile {
+        position: relative;
+
         .menuIcon,
         .menuIcon::after,
         .menuIcon::before {
@@ -18,7 +19,7 @@
             height: calc(1.75em / 10);
             position: absolute;
             background-color: $dark-background-font;
-            transition: all 200ms linear;
+            transition: all 0.2s linear;
         }
 
         .menuIcon::after {
@@ -30,14 +31,38 @@
             transform: translateY(calc(1.75em / -3));
         }
 
+        &.visible .menuIcon {
+            background-color: transparent;
+        }
+
+        &.visible .menuIcon::after {
+            transform: rotate(135deg);
+            transition-delay: 0.1s;
+        }
+
+        &.visible .menuIcon::before {
+            transform: rotate(-135deg);
+            transition-delay: 0.1s;
+            top: -2px;
+        }
+
+        &.visible .navContainer {
+            max-height: 500px;
+            opacity: 1;
+        }
+
         .navContainer {
             @include theme(dark, 'main');
-            box-shadow: 4px 4px 10px $color-shadow;
+            max-height: 0px;
+            box-shadow: 0 2px 15px $color-shadow;
             border-radius: 5px;
             position: absolute;
-            right: 20px;
-            top: 60px;
+            right: -50px;
+            top: 40px;
             @include responsive-size(null, 6px, null);
+            opacity: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease, max-height 0.5s ease;
 
             .navItem {
                 @include responsive-size(32px, 4px, null);

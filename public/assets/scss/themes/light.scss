@@ -34,6 +34,10 @@
 
         .menuNavMobile {
             .navMobile {
+                &.visible .menuIcon {
+                    background-color: transparent;
+                }
+
                 .menuIcon,
                 .menuIcon::after,
                 .menuIcon::before {
@@ -46,12 +50,28 @@
             }
         }
 
+        .btnLang {
+            border: 2px solid $light-color;
+            color: $light-color;
+        }
+
+        .themeToggle {
+            &:focus + .iconSun,
+            &:focus ~ .iconMoon {
+                outline: 2px solid $light-color;
+            }
+        }
+
+        .iconSun {
+            transform: rotate(360deg) scale(0);
+        }
+
+        .iconMoon {
+            transform: rotate(360deg) scale(1);
+        }
+
         .settings {
             .languageContainer {
-                summary {
-                    border: 1px solid $light-color;
-                }
-
                 .optionsLang {
                     @include theme(light, 'main');
 

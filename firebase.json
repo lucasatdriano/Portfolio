@@ -28,8 +28,20 @@
         ],
         "rewrites": [
             {
-                "source": "**",
-                "destination": "/index.html"
+                "source": "/pt-br/**",
+                "destination": "/pt-br/index.html"
+            },
+            {
+                "source": "/en/**",
+                "destination": "/en/index.html"
+            },
+            {
+                "source": "/es/**",
+                "destination": "/es/index.html"
+            },
+            {
+                "source": "/",
+                "destination": "/pt-br/index.html"
             }
         ]
     }

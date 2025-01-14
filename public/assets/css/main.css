@@ -121,6 +121,30 @@ header .menu .logo {
 header .menu .logo::before {
   content: "<Lucas Adriano/>";
 }
+header .menu .btnLang {
+  font-size: clamp(1.03125rem, 2vw, 1.65rem);
+  padding: 0.15625rem;
+  border: 1px solid #f3eded;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  color: #f3eded;
+}
+header .menu .btnLang.active .arrowLang {
+  transform: rotate(-180deg);
+}
+header .menu .btnLang .arrowLang {
+  transition: transform 0.3s ease;
+  transform: rotate(0deg);
+}
+header .menu .btnLang * {
+  padding-inline: 0.3125rem;
+}
+header .menu .imgFlag {
+  height: 2.375rem;
+}
 header .menu .settings {
   display: flex;
   align-items: center;
@@ -128,42 +152,34 @@ header .menu .settings {
 }
 header .menu .settings .languageContainer {
   position: relative;
-  rotate: 0deg;
 }
-header .menu .settings .languageContainer[open] summary .arrowLang {
-  transform: rotate(-180deg);
-}
-header .menu .settings .languageContainer summary {
-  padding: 0.15625rem;
-  border: 1px solid #f3eded;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-header .menu .settings .languageContainer summary .arrowLang {
-  transition: transform 0.3s ease;
-  transform: rotate(0deg);
-}
-header .menu .settings .languageContainer summary * {
-  padding-inline: 0.3125rem;
-}
-header .menu .settings .languageContainer .imgFlag {
-  height: 2.375rem;
+header .menu .settings .languageContainer.visible .optionsLang {
+  max-height: 500px;
+  opacity: 1;
 }
 header .menu .settings .languageContainer .optionsLang {
   margin-block-start: 0.3125rem;
-  position: absolute;
-  width: 100%;
+  width: fit-content;
+  max-height: 0px;
   display: grid;
   gap: 0.3125rem;
+  position: absolute;
+  right: 0;
+  top: 50px;
   background-color: #2e2c2c;
   color: #f3eded;
-  box-shadow: 4px 4px 10px rgba(26, 24, 24, 0.4941176471);
+  box-shadow: 0 2px 15px rgba(26, 24, 24, 0.4941176471);
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(10px);
   border-radius: 5px;
   padding: 0.3125rem;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+header .menu .settings .languageContainer .optionsLang.optionsLangMobile {
+  top: 210px;
+  left: -100px;
 }
 header .menu .settings .languageContainer .optionsLang .langs {
   border-radius: 5px;
@@ -182,6 +198,11 @@ header .menu .settings .languageContainer .optionsLang .langs:hover {
 header .menu .settings .languageContainer .optionsLang .langs.active {
   background-color: #2b2a2a;
   color: #f3eded;
+}
+header .menu .settings .languageContainer .optionsLang .langs .langLink {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 @media (max-width: 850px) {
   header .menu .logo {
@@ -375,7 +396,7 @@ footer .footerText {
 }
 
 .profileContainer {
-  scroll-margin-block-start: 5svh;
+  scroll-margin-block-start: 7svh;
   margin-block-start: -7.5rem;
   position: relative;
   z-index: 200;
@@ -553,7 +574,7 @@ footer .footerText {
   transition: width 0.3s ease;
 }
 .contact .contactContainer .contactItem .linkContact:hover {
-  width: 11.25rem;
+  width: 100%;
 }
 .contact .contactContainer .contactItem .linkContact:hover .iconContact {
   scale: 0;
@@ -597,7 +618,7 @@ footer .footerText {
   .contact .contactContainer {
     gap: 1.5625rem;
   }
-  .contact .contactContainer .contactItem .linkContact:hover {
+  .contact .contactContainer .contactItem:hover {
     width: 7.5rem;
   }
   .contact .contactContainer .contactItem .linkContact .iconContact {
@@ -612,8 +633,11 @@ footer .footerText {
     gap: 0.9375rem;
   }
   .contact .contactContainer .contactItem {
-    width: 4.0625rem;
-    height: 4.0625rem;
+    width: 3.4375rem;
+    height: 3.4375rem;
+  }
+  .contact .contactContainer .contactItem:hover {
+    width: 6.25rem;
   }
   .contact .contactContainer .contactItem .linkContact .iconContact {
     font-size: clamp(1.875rem, 2vw, 3rem);
@@ -703,7 +727,11 @@ main .buttonContainer .buttonToTop {
 .projectContainer .contentProject .linkImage {
   grid-area: image;
   align-self: center;
-  margin-inline: 10px;
+  display: grid;
+  place-self: center;
+  margin-inline: 0.625rem;
+  width: fit-content;
+  height: fit-content;
 }
 .projectContainer .contentProject .linkImage .imgDesktop {
   height: 100%;
@@ -763,6 +791,9 @@ main .buttonContainer .buttonToTop {
     flex-direction: row;
     justify-content: start;
   }
+  .projectContainer:nth-child(even) .contentProject .stackContainer {
+    place-items: end;
+  }
   .projectContainer .contentProject {
     grid-template-areas: "image       image       image" "title       title       title" "description description description" "links       stack       stack";
   }
@@ -779,14 +810,10 @@ main .buttonContainer .buttonToTop {
   .projectContainer .contentProject .descriptionProject {
     text-align: center;
   }
-  .projectContainer .contentProject .stackContainer {
-    justify-self: start;
-  }
   .projectContainer .contentProject .stackContainer .stackDetails {
     flex-wrap: wrap;
   }
   .projectContainer .contentProject .linksProject {
-    justify-content: center;
     height: 100%;
   }
 }
@@ -861,8 +888,10 @@ main .buttonContainer .buttonToTop {
   width: 100%;
   justify-content: end;
   align-items: center;
-  gap: 0.75rem;
-  padding-inline-end: 3.375rem;
+  padding-inline-end: 2.75rem;
+}
+.menuNavMobile .navMobile {
+  position: relative;
 }
 .menuNavMobile .navMobile .menuIcon,
 .menuNavMobile .navMobile .menuIcon::after,
@@ -875,7 +904,7 @@ main .buttonContainer .buttonToTop {
   height: 0.175em;
   position: absolute;
   background-color: #f3eded;
-  transition: all 200ms linear;
+  transition: all 0.2s linear;
 }
 .menuNavMobile .navMobile .menuIcon::after {
   transform: translateY(0.7em);
@@ -884,15 +913,35 @@ main .buttonContainer .buttonToTop {
 .menuNavMobile .navMobile .menuIcon::before {
   transform: translateY(-0.5833333333em);
 }
+.menuNavMobile .navMobile.visible .menuIcon {
+  background-color: transparent;
+}
+.menuNavMobile .navMobile.visible .menuIcon::after {
+  transform: rotate(135deg);
+  transition-delay: 0.1s;
+}
+.menuNavMobile .navMobile.visible .menuIcon::before {
+  transform: rotate(-135deg);
+  transition-delay: 0.1s;
+  top: -2px;
+}
+.menuNavMobile .navMobile.visible .navContainer {
+  max-height: 500px;
+  opacity: 1;
+}
 .menuNavMobile .navMobile .navContainer {
   background-color: #2e2c2c;
   color: #f3eded;
-  box-shadow: 4px 4px 10px rgba(26, 24, 24, 0.4941176471);
+  max-height: 0px;
+  box-shadow: 0 2px 15px rgba(26, 24, 24, 0.4941176471);
   border-radius: 5px;
   position: absolute;
-  right: 20px;
-  top: 60px;
+  right: -50px;
+  top: 40px;
   padding: 0.375rem;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
 }
 .menuNavMobile .navMobile .navContainer .navItem {
   font-size: clamp(1.5rem, 2vw, 2.4rem);
@@ -940,13 +989,11 @@ main .buttonContainer .buttonToTop {
   position: relative;
 }
 .theme .themeToggle {
-  display: none;
+  opacity: 0;
 }
-.theme .themeToggle:checked + .iconSun {
-  transform: rotate(360deg) scale(0);
-}
-.theme .themeToggle:checked ~ .iconMoon {
-  transform: rotate(360deg) scale(1);
+.theme .themeToggle:focus + .iconSun, .theme .themeToggle:focus ~ .iconMoon {
+  outline: 2px solid #f3eded;
+  border-radius: 5px;
 }
 .theme [class*=icon] {
   position: absolute;
@@ -954,7 +1001,7 @@ main .buttonContainer .buttonToTop {
   transition: transform 0.3s ease;
 }
 .theme .iconMoon {
-  transform: scale(0);
+  transform: rotate(0deg) scale(0);
 }
 @media (max-width: 850px) {
   .theme [class*=icon] {
@@ -1046,6 +1093,9 @@ main .buttonContainer .buttonToTop {
   background: linear-gradient(to bottom, #e4e2e2, rgba(228, 226, 226, 0.3764705882));
   color: #0a0505;
 }
+.light header .menuNavMobile .navMobile.visible .menuIcon {
+  background-color: transparent;
+}
 .light header .menuNavMobile .navMobile .menuIcon,
 .light header .menuNavMobile .navMobile .menuIcon::after,
 .light header .menuNavMobile .navMobile .menuIcon::before {
@@ -1055,8 +1105,18 @@ main .buttonContainer .buttonToTop {
   background-color: #d6d2d2;
   color: #0a0505;
 }
-.light header .settings .languageContainer summary {
-  border: 1px solid #0a0505;
+.light header .btnLang {
+  border: 2px solid #0a0505;
+  color: #0a0505;
+}
+.light header .themeToggle:focus + .iconSun, .light header .themeToggle:focus ~ .iconMoon {
+  outline: 2px solid #0a0505;
+}
+.light header .iconSun {
+  transform: rotate(360deg) scale(0);
+}
+.light header .iconMoon {
+  transform: rotate(360deg) scale(1);
 }
 .light header .settings .languageContainer .optionsLang {
   background-color: #d6d2d2;

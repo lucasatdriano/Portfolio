@@ -85,16 +85,106 @@ inputsCheck.forEach((inputCheck) => {
     }
 });
 
+function handleThemeChange(inputCheck) {
+    if (inputCheck.checked) {
+        body.classList.toggle('light');
+        localStorage.setItem('lightMode', 'enabled');
+    } else {
+        body.classList.toggle('light');
+        localStorage.setItem('lightMode', 'disabled');
+    }
+}
+
 inputsCheck.forEach((inputCheck) => {
-    inputCheck.addEventListener('change', () => {
-        if (inputCheck.checked) {
-            body.classList.add('light');
-            localStorage.setItem('lightMode', 'enabled');
-        } else {
-            body.classList.remove('light');
-            localStorage.setItem('lightMode', 'disabled');
+    inputCheck.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            this.checked = !this.checked;
+            handleThemeChange(this);
         }
+    });
+
+    inputCheck.addEventListener('change', () => {
+        handleThemeChange(inputCheck);
+        inputCheck.blur();
     });
 });
 
-// function para abrir e fechar icon do menuNavMobile
+// function para abrir e fechar o menu do NavMobile
+const links = document.querySelectorAll('.linkMobile');
+const out = document.querySelector('main');
+const btnMob = document.querySelector('#btnMenuMob');
+const nav = document.querySelector('#nav');
+
+function toggleMenu(event) {
+    nav.classList.toggle('visible');
+    const active = nav.classList.contains('visible');
+    event.currentTarget.setAttribute('aria-expanded', active);
+    if (active) {
+        event.currentTarget.setAttribute('aria-label', 'Fechar Menu');
+    } else {
+        event.currentTarget.setAttribute('aria-label', 'Abrir Menu');
+    }
+    langContainerMobile.classList.remove('visible');
+    langContainerDesk.classList.remove('visible');
+}
+btnMob.addEventListener('click', toggleMenu);
+
+links.forEach((link) => {
+    link.addEventListener('click', toggleMenu);
+});
+
+// function para abrir e fechar o container das linguagens
+const btnLangDesk = document.querySelector('#btnLangDesk');
+const langContainerDesk = document.querySelector('#navLanguage');
+
+function toggleLangDesk(event) {
+    langContainerDesk.classList.toggle('visible');
+    btnLangDesk.classList.toggle('active');
+    const active = langContainerDesk.classList.contains('visible');
+    event.currentTarget.setAttribute('aria-expanded', active);
+    if (active) {
+        event.currentTarget.setAttribute(
+            'aria-label',
+            'Fechar Container Linguagem',
+        );
+    } else {
+        event.currentTarget.setAttribute(
+            'aria-label',
+            'Abrir Container Linguagem',
+        );
+    }
+}
+btnLangDesk.addEventListener('click', toggleLangDesk);
+
+const btnLangMobile = document.querySelector('#btnLangMobile');
+const langContainerMobile = document.querySelector('#navLanguageMob');
+
+function toggleLangMobile(event) {
+    langContainerMobile.classList.toggle('visible');
+    btnLangMobile.classList.toggle('active');
+    const active = langContainerMobile.classList.contains('visible');
+    event.currentTarget.setAttribute('aria-expanded', active);
+    if (active) {
+        event.currentTarget.setAttribute(
+            'aria-label',
+            'Fechar Container Linguagem',
+        );
+    } else {
+        event.currentTarget.setAttribute(
+            'aria-label',
+            'Abrir Container Linguagem',
+        );
+    }
+}
+btnLangMobile.addEventListener('click', toggleLangMobile);
+
+// function para fechar menu ao clicar na tela
+function closeMenuAndLang(event) {
+    nav.classList.remove('visible');
+    langContainerMobile.classList.remove('visible');
+    langContainerDesk.classList.remove('visible');
+    btnLangMobile.classList.remove('active');
+    btnLangDesk.classList.remove('active');
+}
+
+out.addEventListener('click', closeMenuAndLang);

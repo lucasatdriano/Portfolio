@@ -7,14 +7,12 @@
     position: relative;
 
     .themeToggle {
-        display: none;
+        opacity: 0;
 
-        &:checked + .iconSun {
-            transform: rotate(360deg) scale(0);
-        }
-
-        &:checked ~ .iconMoon {
-            transform: rotate(360deg) scale(1);
+        &:focus + .iconSun,
+        &:focus ~ .iconMoon {
+            outline: 2px solid $dark-color;
+            border-radius: 5px;
         }
     }
 
@@ -25,7 +23,7 @@
     }
 
     .iconMoon {
-        transform: scale(0);
+        transform: rotate(0deg) scale(0);
     }
 
     @include respond-to('medium') {

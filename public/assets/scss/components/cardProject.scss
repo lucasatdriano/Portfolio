@@ -40,7 +40,11 @@
         .linkImage {
             grid-area: image;
             align-self: center;
-            margin-inline: 10px;
+            display: grid;
+            place-self: center;
+            margin-inline: px-to-rem(10px);
+            width: fit-content;
+            height: fit-content;
 
             .imgDesktop {
                 height: 100%;
@@ -114,6 +118,10 @@
                     flex-direction: row;
                     justify-content: start;
                 }
+
+                .stackContainer {
+                    place-items: end;
+                }
             }
         }
 
@@ -142,14 +150,12 @@
             }
 
             .stackContainer {
-                justify-self: start;
                 .stackDetails {
                     flex-wrap: wrap;
                 }
             }
 
             .linksProject {
-                justify-content: center;
                 height: 100%;
             }
         }

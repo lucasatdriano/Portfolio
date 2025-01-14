@@ -33,7 +33,7 @@
                 @include transition(width);
 
                 &:hover {
-                    width: px-to-rem(180px);
+                    width: 100%;
 
                     .iconContact {
                         scale: 0;
@@ -93,11 +93,11 @@
             gap: px-to-rem(25px);
 
             .contactItem {
-                .linkContact {
-                    &:hover {
-                        width: px-to-rem(120px);
-                    }
+                &:hover {
+                    width: px-to-rem(120px);
+                }
 
+                .linkContact {
                     .iconContact {
                         @include responsive-size(46px, null, null);
                     }
@@ -115,8 +115,12 @@
             gap: px-to-rem(15px);
 
             .contactItem {
-                width: px-to-rem(65px);
-                height: px-to-rem(65px);
+                width: px-to-rem(55px);
+                height: px-to-rem(55px);
+
+                &:hover {
+                    width: px-to-rem(100px);
+                }
 
                 .linkContact {
                     .iconContact {
