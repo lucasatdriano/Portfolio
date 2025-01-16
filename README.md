@@ -2,8 +2,7 @@
 
 Este é o meu portfólio, desenvolvido utilizando **HTML**, **JavaScript** e conceitos avançados de **SASS**, como **mixins**, **funções** e **variáveis**. O site possui suporte para **modo claro e escuro** e é multilíngue, com versões em **português**, **inglês** e **espanhol**. A hospedagem foi realizada através do **Firebase**.
 
-![Logo do Portfólio](public/assets/images/readMe/logoReadMe.png)
-![Capa do Portfólio](public/assets/images/readMe/capaReadMe.png)
+<img src="public/assets/images/readMe/capaReadMe.png" alt="Capa do Portfólio" style="width: 100%;">
 
 ## Índice
 
@@ -29,9 +28,8 @@ Este é o meu portfólio, desenvolvido utilizando **HTML**, **JavaScript** e con
 
 ## 📁 Estrutura do Projeto
 
-### **firebaseConfig.js**: Arquivo com configurações para integração com o Firebase.
-
-### **public**
+#### **firebaseConfig.js**: Arquivo com configurações para integração com o Firebase.
+#### **public**
 
     - **pt-br/**: Página inicial para o idioma português (Brasil).
     - **en/**: Página inicial para o idioma inglês.
@@ -56,7 +54,7 @@ Este é o meu portfólio, desenvolvido utilizando **HTML**, **JavaScript** e con
 1. Clone este repositório:
 
     ```bash
-    git clone https://github.com/lucasadriano/portfolio
+    git clone https://github.com/lucasatdriano/portfolio
     ```
 
 2. Acesse o diretório do projeto:
@@ -83,6 +81,6 @@ Este portfólio é uma vitrine para minhas habilidades como desenvolvedor front-
 
 Este projeto foi desenvolvido por mim, Lucas Adriano. Para dúvidas ou sugestões, entre em contato:
 
--   **Email**: [lucasadriano@gmail.com](mailto:lucasadriano@gmail.com)
--   **LinkedIn**: [Lucas Adriano](https://linkedin.com/in/lucasadriano)
--   **GitHub**: [Lucas Adriano](https://github.com/lucasadriano)
+-   **Email**: [lucasadriano@gmail.com](mailto:lucasatdriano@gmail.com)
+-   **LinkedIn**: [Lucas Adriano](https://linkedin.com/in/lucasadrianodev)
+-   **GitHub**: [Lucas Adriano](https://github.com/lucasatdriano)
