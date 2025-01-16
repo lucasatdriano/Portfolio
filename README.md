@@ -81,6 +81,6 @@ Este portfólio é uma vitrine para minhas habilidades como desenvolvedor front-
 
 Este projeto foi desenvolvido por mim, Lucas Adriano. Para dúvidas ou sugestões, entre em contato:
 
--   **Email**: [lucasadriano@gmail.com](mailto:lucasatdriano@gmail.com)
--   **LinkedIn**: [Lucas Adriano](https://linkedin.com/in/lucasadrianodev)
--   **GitHub**: [Lucas Adriano](https://github.com/lucasatdriano)
+-   **Email**: [lucasatdriano@gmail.com](mailto:lucasatdriano@gmail.com)
+-   **LinkedIn**: [Lucas Adriano](https://linkedin.com/in/lucasadrianodev/)
+-   **Instagram**: [@\_\_lgoncalves](https://instagram.com/__lgoncalves/)
